@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 定损清单列表查询-->
+<mapper namespace="com.chinacoal.ins.claim.car.dao.InjuredMapper">
+
+  <!-- 查询人伤理算信息列表  -->
+  <select id="findInjuredList" parameterType="java.lang.String" resultType="com.chinacoal.ins.claim.car.pojo.InjuredInfoDto">
+    select distinct t3.claimno as caseNo,
+                t3.compensateno as compensateNo,
+                t2.id as injuredId,
+                t1.personname as injuredName,
+                t2.personsex as injuredSex,
+                t2.personage as injuredAge,
+                t.lossfeetype as injuredLossType,
+                '未提供' as diagnose,
+                '未提供' as contactName,
+                t.sumloss as sumAmount,
+                (select count(*)
+                   from prplcompensate compensate
+                  where compensate.compensateno = t1.compensateno) claimTimes,
+                (select count(*)
+                   from prplcheck ccheck
+                  where ccheck.registno = t1.registno) checkTimes
+  from prplperson t, prplpersonitem t1, prplinjured t2, prplcompensate t3
+  <where>
+    t.registno = t1.registno
+    and t.id = t1.prplpersonid
+    and t.injuredid = t2.id
+    and t1.compensateno = t3.compensateno
+    <if test="_parameter!=null">
+      and t1.registno = #{registNo}
+    </if>
+  </where>
+  </select>
+
+  <!-- 查询人伤明细信息列表 -->
+  <select id="findInjuredFees"  parameterType="java.util.HashMap" resultType="com.chinacoal.ins.claim.car.pojo.InjuredFeeDto">
+    select t.chargecode as injuredFeeCode,
+        t.chargename as injuredFeeName,
+        t.sumloss as polAmount,
+        t.sumrealpay as realAmount,
+        (select count(*)
+           from prplcompensate recase
+          where recase.claimno = t1.claimno) feeClaimTimes,
+        (select count(*)
+           from prplcheck ccheck
+          where ccheck.registno = t1.registno) feeCheckTimes
+    from prplpersonloss t, prplclaim t1
+    <where>
+        <if test="compensateNo!=null and compensateNo!=''">
+            t.compensateno = #{compensateNo}
+        </if>
+        <if test="claimNo!=null and claimNo!=''">
+            and t1.claimno = #{claimNo}
+        </if>
+        <if test="injuredId!=null and injuredId!=''">
+            and t.injuredid = #{injuredId}
+        </if>
+    </where>
+  </select>
+</mapper>

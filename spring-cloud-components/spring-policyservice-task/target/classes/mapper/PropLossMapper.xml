@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.claim.car.dao.PropLossMapper">
+
+  <!-- 查询财产损失项信息 -->
+  <select id="findPropLosses" parameterType="java.lang.String" resultType="com.chinacoal.ins.claim.car.pojo.PropInfoDto">
+    select a1.id               as propMainId,
+       a.claimno           as caseNo,
+       a.registno          as registNo,
+       a1.lossfeetype      as lossFeeType,
+       a1.riskcode         as riskcode,
+      case when a1.sumveriloss is not null then  a1.sumveriloss
+      when a1.sumdefloss is not null then a1.sumdefloss
+      else a1.sumloss end as sumVeriLoss,
+       a1.prplthirdpartyid as lossOwnerId
+    from prplclaim a, prplpropmain a1
+    <where>
+      a.registno = a1.registno
+      <if test="_parameter!=null">
+        and a.claimno = #{claimNo}
+      </if>
+    </where>
+  </select>
+  <!-- 查询财产损失项明细 -->
+  <select id="findPropFees" parameterType="java.util.HashMap" resultType="com.chinacoal.ins.claim.car.pojo.PropLossFeeDto">
+    select a.lossitemname    as lossItemName,
+       a.kindcode        as itemKindCode,
+       a.kindname        as itemKindName,
+       a.lossdegreecode  as lossSpeciesCode,
+       a.lossspeciesname as lossSpeciesName,
+      case when a.verirate is not null then  a.verirate
+      else a.lossrate end as lossRate,
+      case when a.veriunitprice is not null then  a.veriunitprice
+      else a.unitPrice end as unitPrice,
+      case when a.verilossquantity is not null then  a.verilossquantity
+      else a.lossQuantity end as lossQuantity,
+      case when a.verisumloss is not null then  a.verisumloss
+      when a.sumdefloss is not null then a.sumdefloss
+      else a.sumloss end as sumVeriLoss
+    from prplpropfee a
+    <where>
+      <if test="registNo!=null and registNo!=''">
+        a.registno = #{registNo}
+      </if>
+      <if test="propMainId!=null and propMainId!=''">
+        and a.prplpropmainid = #{propMainId}
+      </if>
+    </where>
+  </select>
+</mapper>

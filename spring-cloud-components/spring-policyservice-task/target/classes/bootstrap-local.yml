@@ -1,0 +1,73 @@
+#各组件服务器信息
+###################################
+hostconfig:
+  eureka:
+    registry01.host: localhost
+    registty01.port: 1111
+  server:
+    config.host: localhost
+    config.port: 7015
+  #  统一消息总线地址和端口号
+  kafkaserver.host: 10.1.4.69
+  kafkaserver.port: 9092
+##################################
+server:
+  port: ${hostconfig.server.config.port}
+spring:
+  application:
+    #注册中心注册的实例应用名
+    name: task-policy-server
+
+  cloud:
+    config:
+      profile: test
+      label: master
+      discovery:
+        enabled: true
+        #要发现的config-server实例
+        service-id: spring-config-server
+        #service-id: spring-cloud-config
+      name: config
+      #快速响应
+      fail-fast: true
+    bus:
+      refresh:
+        enabled: true
+    #kafka:
+      #bootstrap-servers: ${hostconfig.kafkaserver.host}:${hostconfig.kafkaserver.port}
+
+#eureka配置信息
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${hostconfig.eureka.registry01.host}:${hostconfig.eureka.registty01.port}/eureka/
+#控制台打印sql
+logging:
+  level:
+    com:
+      chinacoal:
+        ins:
+          proposal:
+            car:
+              dao: info
+
+#mybatis配置
+mybatis:
+  mybatisConfigFilePath: config/mybatis-config.xml
+  entityPackage: com.chinacoal.ins.proposal.car.pojo,com.chinacoal.ins.claim.car.pojo
+  # 版本区分mapperPath/mapper-locations
+  mapper-locations: mapper/**.xml
+
+swagger:
+  enable: true
+
+
+#pagehelper配置
+pagehelper:
+  reasonable: true
+ # support-methods-arguments: false
+  params: count=countSql
+  offsetAsPageNum: true
+  rowBoundsWithCount: true
+  supportMethodsArguments: true
+  helperDialect: oracle

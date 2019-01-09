@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.proposal.car.dao.GuEndorEndorTextDetailMapper">
+  <resultMap id="BaseResultMap" type="com.chinacoal.ins.proposal.car.pojo.GuEndorEndorTextDetail">
+    <id column="ENDORNO" jdbcType="VARCHAR" property="endorno" />
+    <id column="PLANCODE" jdbcType="VARCHAR" property="plancode" />
+    <id column="RISKCODE" jdbcType="VARCHAR" property="riskcode" />
+    <id column="BLOCKSERIESNO" jdbcType="DECIMAL" property="blockseriesno" />
+    <id column="FIELDSERIESNO" jdbcType="DECIMAL" property="fieldseriesno" />
+    <result column="SUBENDORNO" jdbcType="VARCHAR" property="subendorno" />
+    <result column="POLICYNO" jdbcType="VARCHAR" property="policyno" />
+    <result column="FIELDNAME" jdbcType="VARCHAR" property="fieldname" />
+    <result column="OLDVALUE" jdbcType="VARCHAR" property="oldvalue" />
+    <result column="NEWVALUE" jdbcType="VARCHAR" property="newvalue" />
+    <result column="CHANGEQUANTITY" jdbcType="VARCHAR" property="changequantity" />
+    <result column="CHANGEIND" jdbcType="VARCHAR" property="changeind" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="PRINTIND" jdbcType="VARCHAR" property="printind" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ENDORNO, PLANCODE, RISKCODE, BLOCKSERIESNO, FIELDSERIESNO, SUBENDORNO, POLICYNO, 
+    FIELDNAME, OLDVALUE, NEWVALUE, CHANGEQUANTITY, CHANGEIND, REMARK, FLAG, PRINTIND
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.chinacoal.ins.proposal.car.pojo.GuEndorEndorTextDetailKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from GUENDORENDORTEXTDETAIL
+    where ENDORNO = #{endorno,jdbcType=VARCHAR}
+      and PLANCODE = #{plancode,jdbcType=VARCHAR}
+      and RISKCODE = #{riskcode,jdbcType=VARCHAR}
+      and BLOCKSERIESNO = #{blockseriesno,jdbcType=DECIMAL}
+      and FIELDSERIESNO = #{fieldseriesno,jdbcType=DECIMAL}
+  </select>
+  <select id="findByEndorInfo" parameterType="com.chinacoal.ins.proposal.car.vo.EndorHeadInfoVo" resultType="com.chinacoal.ins.proposal.car.pojo.GuEndorEndorTextDetail">
+    select
+      t.fieldName as fieldName,
+      t.oldValue  as oldValue,
+      t.newValue  as newValue
+    from GuEndorEndorTextDetail t
+    <where>
+      <if test="_parameter != null">
+        t.ENDORNO = #{endorNo,jdbcType=VARCHAR}
+        and t.riskCode = #{riskCode,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

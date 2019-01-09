@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.claim.car.dao.PrpLpaymentMapper">
+  <resultMap id="BaseResultMap" type="com.chinacoal.ins.claim.car.pojo.PrpLpayment">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="COMPENSATENO" jdbcType="VARCHAR" property="compensateNo" />
+    <result column="POLICYNO" jdbcType="VARCHAR" property="policyNo" />
+    <result column="RISKCODE" jdbcType="VARCHAR" property="riskCode" />
+    <result column="KINDCODE" jdbcType="VARCHAR" property="kindCode" />
+    <result column="KINDNAME" jdbcType="VARCHAR" property="kindName" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
+    <result column="SUMREALPAY" jdbcType="DECIMAL" property="sumRealPay" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="VALIDFLAG" jdbcType="VARCHAR" property="validFlag" />
+    <result column="CUSTACCOUNTNO" jdbcType="VARCHAR" property="custAccountNo" />
+    <result column="BANKNAME" jdbcType="VARCHAR" property="bankName" />
+    <result column="CLAIMNAME" jdbcType="VARCHAR" property="claimName" />
+    <result column="IDENTIFYNUMBER" jdbcType="VARCHAR" property="identifynumber" />
+    <result column="BANKADRESS" jdbcType="VARCHAR" property="bankAdress" />
+    <result column="REGISTNO" jdbcType="VARCHAR" property="registNo" />
+    <result column="ERRORFLAG" jdbcType="VARCHAR" property="errorFlag" />
+    <result column="ITEMKINDNO" jdbcType="DECIMAL" property="itemKindNo" />
+    <result column="AGRICULTUREFLAG" jdbcType="VARCHAR" property="agricultureFlag" />
+    <result column="ACCEPTERTYPE" jdbcType="VARCHAR" property="accepterType" />
+    <result column="ACCEPTERTYPENAME" jdbcType="VARCHAR" property="accepterTypeName" />
+    <result column="ACCEPTERKIND" jdbcType="VARCHAR" property="accepterKind" />
+    <result column="ACCEPTERKINDNAME" jdbcType="VARCHAR" property="accepterKindName" />
+    <result column="DOCUMENTYPE" jdbcType="VARCHAR" property="documenType" />
+    <result column="BANKTYPECODE" jdbcType="VARCHAR" property="bankTypeCode" />
+    <result column="AREACLCODE" jdbcType="VARCHAR" property="areaclCode" />
+    <result column="BANK_BRANCH_CODE" jdbcType="VARCHAR" property="bankBranchCode" />
+    <result column="BANK_INFO_CODE" jdbcType="VARCHAR" property="bankInfoCode" />
+    <result column="BANK_JH_CODE" jdbcType="VARCHAR" property="bankJhCode" />
+    <result column="BANK_INFO_NAME" jdbcType="VARCHAR" property="bankInfoName" />
+    <result column="PARENTCODE" jdbcType="VARCHAR" property="parentCode" />
+    <result column="PARENTNAME" jdbcType="VARCHAR" property="parentName" />
+    <result column="BANK_BRANCH_NAME" jdbcType="VARCHAR" property="bankBranchName" />
+    <result column="BANKTYPENAME" jdbcType="VARCHAR" property="bankTypeName" />
+    <result column="AREACLNAME" jdbcType="VARCHAR" property="areaclName" />
+    <result column="ISPUB" jdbcType="VARCHAR" property="isPub" />
+    <result column="SFBANKCODE" jdbcType="VARCHAR" property="sfBankCode" />
+    <result column="SFBANKNAME" jdbcType="VARCHAR" property="sfBankName" />
+    <result column="DOCUMENTYPECODE" jdbcType="VARCHAR" property="documenTypeCode" />
+    <result column="ISREPLACEFLAG" jdbcType="VARCHAR" property="isReplaceFlag" />
+    <result column="ISREPLACEFLAGNAME" jdbcType="VARCHAR" property="isReplaceFlagName" />
+    <result column="LICENSENO" jdbcType="VARCHAR" property="licenseNo" />
+    <result column="EXAMINE" jdbcType="VARCHAR" property="examine" />
+    <result column="PHONENUMBER" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="PAYDATE" jdbcType="TIMESTAMP" property="payDate" />
+    <result column="PAYREASON" jdbcType="VARCHAR" property="payReason" />
+    <result column="PAYFLAG" jdbcType="VARCHAR" property="payFlag" />
+    <result column="LITIGATIONCODE" jdbcType="VARCHAR" property="litigationCode" />
+    <result column="PARTNERCOMNAME" jdbcType="VARCHAR" property="partnerComName" />
+    <result column="PARTNERCOMCODE" jdbcType="VARCHAR" property="partnerComCode" />
+    <result column="CLIENTCODE" jdbcType="VARCHAR" property="clientCode" />
+    <result column="CLIENTTYPE" jdbcType="VARCHAR" property="clientType" />
+    <result column="PROVINCECODE" jdbcType="VARCHAR" property="provinceCode" />
+    <result column="PROVINCENAME" jdbcType="VARCHAR" property="provinceName" />
+    <result column="COINSRATE" jdbcType="DECIMAL" property="coinsRate" />
+    <result column="COINSPAID" jdbcType="DECIMAL" property="coinsPaid" />
+    <result column="COINSFLAG" jdbcType="VARCHAR" property="coinsFlag" />
+  </resultMap>
+
+  <select id="findPayMent" parameterType="hashmap" resultType="com.chinacoal.ins.claim.car.pojo.PrpLpayment">
+    select a.compensateno,
+      a.policyno,
+      a.registno,
+      a.sumrealpay,
+      a.paydate
+    from prplpayment a
+    <where>
+      a.paydate is not null
+      and a.Payflag = '2'
+      <if test="registNo!=null and registNo!=''">
+        and a.registno = #{registNo}
+      </if>
+      <if test="policyNo!=null and policyNo!=''">
+        and a.policyno = #{policyNo}
+      </if>
+    </where>
+    order by a.id desc
+  </select>
+</mapper>

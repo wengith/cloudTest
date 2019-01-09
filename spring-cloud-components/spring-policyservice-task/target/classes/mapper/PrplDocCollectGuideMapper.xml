@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.claim.car.dao.PrplDocCollectGuideMapper">
+  <resultMap id="BaseResultMap" type="com.chinacoal.ins.claim.car.pojo.PrplDocCollectGuide">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="REGISTNO" jdbcType="VARCHAR" property="registNo" />
+    <result column="POLICYNO" jdbcType="VARCHAR" property="policyNo" />
+    <result column="RISKCODE" jdbcType="VARCHAR" property="riskCode" />
+    <result column="DOCITEMTYPE" jdbcType="VARCHAR" property="docItemType" />
+    <result column="LOSSITEMID" jdbcType="DECIMAL" property="lossItemId" />
+    <result column="DOCCODE" jdbcType="VARCHAR" property="docCode" />
+    <result column="DOCNAME" jdbcType="VARCHAR" property="docName" />
+    <result column="PARENTTYPECODE" jdbcType="VARCHAR" property="parentTypeCode" />
+    <result column="PICCOUNT" jdbcType="VARCHAR" property="picCount" />
+    <result column="STARTDATE" jdbcType="TIMESTAMP" property="startDate" />
+    <result column="ENDDATE" jdbcType="TIMESTAMP" property="endDate" />
+    <result column="PROVIDEIND" jdbcType="VARCHAR" property="provideInd" />
+    <result column="COLLECTIND" jdbcType="VARCHAR" property="collectInd" />
+    <result column="OPERATORCODE" jdbcType="VARCHAR" property="operatorCode" />
+    <result column="OPERATEDATE" jdbcType="TIMESTAMP" property="operateDate" />
+    <result column="COLUMNVALUE" jdbcType="VARCHAR" property="columnValue" />
+    <result column="COMCODE" jdbcType="VARCHAR" property="comCode" />
+    <result column="MAKECOM" jdbcType="VARCHAR" property="makeCom" />
+    <result column="VALIDFLAG" jdbcType="VARCHAR" property="validFlag" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="MIXTYPE" jdbcType="VARCHAR" property="mixType" />
+    <result column="DOCTYPE" jdbcType="VARCHAR" property="docType" />
+  </resultMap>
+
+  <!-- 根据报案号查询 -->
+  <select id="findDocCollects" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select a.*
+    from PrplDocCollectGuide a
+    <where>
+      <if test="_parameter!=null and _parameter!=''">
+        a.registno = #{registNo}
+      </if>
+    </where>
+  </select>
+
+</mapper>

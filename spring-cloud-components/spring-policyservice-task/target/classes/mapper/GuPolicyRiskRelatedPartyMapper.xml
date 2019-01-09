@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.proposal.car.dao.GuPolicyRiskRelatedPartyMapper">
+  <resultMap id="BaseResultMap" type="com.chinacoal.ins.proposal.car.pojo.GuPolicyRiskRelatedParty">
+    <id column="POLICYNO" jdbcType="VARCHAR" property="policyNo" />
+    <id column="PLANCODE" jdbcType="VARCHAR" property="planCode" />
+    <id column="RISKCODE" jdbcType="VARCHAR" property="riskCode" />
+    <id column="SERIALNO" jdbcType="DECIMAL" property="serialNo" />
+    <result column="SUBPOLICYNO" jdbcType="VARCHAR" property="subPolicyNo" />
+    <result column="INSUREDTYPE" jdbcType="VARCHAR" property="insuredType" />
+    <result column="INSUREDCODE" jdbcType="VARCHAR" property="insuredCode" />
+    <result column="INSUREDNAME" jdbcType="VARCHAR" property="insuredName" />
+    <result column="INSUREDADDRESS" jdbcType="VARCHAR" property="insuredAddress" />
+    <result column="INSUREDBUSINESSSOURCE" jdbcType="VARCHAR" property="insuredBusinessSource" />
+    <result column="INSUREDFLAG" jdbcType="VARCHAR" property="insuredFlag" />
+    <result column="INSUREDROLE" jdbcType="VARCHAR" property="insuredRole" />
+    <result column="IDENTIFYTYPE" jdbcType="VARCHAR" property="identifyType" />
+    <result column="IDENTIFYNUMBER" jdbcType="VARCHAR" property="identifyNumber" />
+    <result column="INSUREDRELATION" jdbcType="VARCHAR" property="insuredRelation" />
+    <result column="RELATESERIALNO" jdbcType="DECIMAL" property="relateSerialNo" />
+    <result column="INSUREDIND" jdbcType="VARCHAR" property="insuredInd" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="INSUREDSEX" jdbcType="VARCHAR" property="insuredSex" />
+    <result column="INSUREDBIRTHDATE" jdbcType="TIMESTAMP" property="insuredBirthDate" />
+    <result column="INSUREDPOSTCODE" jdbcType="VARCHAR" property="insuredPostCode" />
+    <result column="INSUREDOFFICEPHONE" jdbcType="VARCHAR" property="insuredOfficePhone" />
+    <result column="INSUREDMOBILEPHONE" jdbcType="VARCHAR" property="insuredMobilePhone" />
+    <result column="INSUREDHOMEPHONE" jdbcType="VARCHAR" property="insuredHomePhone" />
+    <result column="CONTACTNAME" jdbcType="VARCHAR" property="contactName" />
+    <result column="CONTACTPHONE" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="MARRIAGESTATUS" jdbcType="VARCHAR" property="marriageStatus" />
+    <result column="EDUCATIONBACKGROUND" jdbcType="VARCHAR" property="educationBackground" />
+    <result column="RELATIONWITHHOLDER" jdbcType="VARCHAR" property="relationWithHolder" />
+    <result column="CONTACTSEX" jdbcType="VARCHAR" property="contactSex" />
+    <result column="CONTACTTYPE" jdbcType="VARCHAR" property="contactType" />
+    <result column="CONTACTDEPARTMENT" jdbcType="VARCHAR" property="contactDepartment" />
+    <result column="CONTACTPOSITION" jdbcType="VARCHAR" property="contactPosition" />
+    <result column="CONTACTOFFICENUMBER" jdbcType="VARCHAR" property="contactOfficeNumber" />
+    <result column="CONTACTMOBILE" jdbcType="VARCHAR" property="contactMobile" />
+    <result column="RELATEDTYPE" jdbcType="VARCHAR" property="relatedType" />
+    <result column="ITEMPROVINCECODE" jdbcType="VARCHAR" property="itemProvinceCode" />
+    <result column="ITEMCITYCODE" jdbcType="VARCHAR" property="itemCityCode" />
+    <result column="ITEMPROVINCECNAME" jdbcType="VARCHAR" property="itemProvincecName" />
+    <result column="ITEMCITYCNAME" jdbcType="VARCHAR" property="itemCitycName" />
+    <result column="MONEYLAUNDERINGIND" jdbcType="VARCHAR" property="moneyLaunderingInd" />
+    <result column="STARLEVEL" jdbcType="VARCHAR" property="starLevel" />
+    <result column="CARINSUREDRELATION" jdbcType="VARCHAR" property="carInsuredRelation" />
+    <result column="CLIENTTYPEIDENTITY" jdbcType="VARCHAR" property="clientTypeIdentity" />
+    <result column="MSNNO" jdbcType="VARCHAR" property="msnNo" />
+    <result column="QQNO" jdbcType="VARCHAR" property="qqNo" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="CONTACTPHONENO" jdbcType="VARCHAR" property="contactPhoneNo" />
+    <result column="COUNTRYCODE" jdbcType="VARCHAR" property="countryCode" />
+    <result column="CLAIMRIGHTSNAME" jdbcType="VARCHAR" property="claimRightsName" />
+    <result column="CLAIMRIGHTSIDENTIFYNUMBER" jdbcType="VARCHAR" property="claimRightsIdentifyNumber" />
+    <result column="ISCLAIMRIGHTS" jdbcType="VARCHAR" property="isClaimRights" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    POLICYNO, PLANCODE, RISKCODE, SERIALNO, SUBPOLICYNO, INSUREDTYPE, INSUREDCODE, INSUREDNAME, 
+    INSUREDADDRESS, INSUREDBUSINESSSOURCE, INSUREDFLAG, INSUREDROLE, IDENTIFYTYPE, IDENTIFYNUMBER, 
+    INSUREDRELATION, RELATESERIALNO, INSUREDIND, REMARK, FLAG, INSUREDSEX, INSUREDBIRTHDATE, 
+    INSUREDPOSTCODE, INSUREDOFFICEPHONE, INSUREDMOBILEPHONE, INSUREDHOMEPHONE, CONTACTNAME, 
+    CONTACTPHONE, MARRIAGESTATUS, EDUCATIONBACKGROUND, RELATIONWITHHOLDER, CONTACTSEX, 
+    CONTACTTYPE, CONTACTDEPARTMENT, CONTACTPOSITION, CONTACTOFFICENUMBER, CONTACTMOBILE, 
+    RELATEDTYPE, ITEMPROVINCECODE, ITEMCITYCODE, ITEMPROVINCECNAME, ITEMCITYCNAME, MONEYLAUNDERINGIND, 
+    STARLEVEL, CARINSUREDRELATION, CLIENTTYPEIDENTITY, MSNNO, QQNO, EMAIL, ADDRESS, CONTACTPHONENO, 
+    COUNTRYCODE, CLAIMRIGHTSNAME, CLAIMRIGHTSIDENTIFYNUMBER, ISCLAIMRIGHTS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.chinacoal.ins.proposal.car.pojo.GuPolicyRiskrelatedpartyKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from GUPOLICYRISKRELATEDPARTY
+    where POLICYNO = #{POLICYNO,jdbcType=VARCHAR}
+      and PLANCODE = #{PLANCODE,jdbcType=VARCHAR}
+      and RISKCODE = #{RISKCODE,jdbcType=VARCHAR}
+      and SERIALNO = #{SERIALNO,jdbcType=DECIMAL}
+  </select>
+
+  <select id="selectByPolicynoAndIdentifyno" parameterType="hashmap" resultMap="BaseResultMap">
+    select *
+    from Gupolicyriskrelatedparty t
+    <where>
+      <if test="policyNo!=null">
+        t.SUBPOLICYNO = #{policyNo}
+      </if>
+      <if test="identifyNo!=null">
+        and t.IDENTIFYNUMBER = #{identifyNo}
+      </if>
+      <if test="identifyType!=null">
+        and t.IDENTIFYTYPE = #{identifyType}
+      </if>
+    </where>
+  </select>
+
+  <!-- 根据分单号查询 -->
+  <select id="findBySubPolicyNo" parameterType="java.lang.String" resultType="com.chinacoal.ins.proposal.car.pojo.GuPolicyRiskRelatedParty">
+    select
+      t.INSUREDTYPE    as insuredType,
+      t.INSUREDNAME    as insuredName,
+      t.IdentifyType   as identifyType,
+      t.IdentifyNumber as identifyNumber,
+      t.InsuredBirthDate  as insuredBirthDate
+    from GupolicyRiskRelatedParty t
+    <where>
+      <if test="_parameter != null">
+        t.SUBPOLICYNO = #{subPolicyNo,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>
