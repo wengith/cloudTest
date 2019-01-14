@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.proposal.car.dao.GuPolicyItemMotorMapper">
+  <resultMap id="BaseResultMap" type="com.chinacoal.ins.proposal.car.pojo.GuPolicyItemMotor">
+    <id column="POLICYNO" jdbcType="VARCHAR" property="policyNo" />
+    <id column="PLANCODE" jdbcType="VARCHAR" property="planCode" />
+    <id column="RISKCODE" jdbcType="VARCHAR" property="riskCode" />
+    <id column="ITEMNO" jdbcType="DECIMAL" property="itemNo" />
+    <result column="INSUREDTYPECODE" jdbcType="VARCHAR" property="insuredTypeCode" />
+    <result column="CARINSUREDRELATION" jdbcType="VARCHAR" property="carInsuredRelation" />
+    <result column="CAROWNER" jdbcType="VARCHAR" property="carOwner" />
+    <result column="FLEETNAME" jdbcType="VARCHAR" property="fleetName" />
+    <result column="CLAUSETYPE" jdbcType="VARCHAR" property="clauseType" />
+    <result column="AGREEDRIVERIND" jdbcType="VARCHAR" property="agreeDriverInd" />
+    <result column="NEWDEVICEIND" jdbcType="VARCHAR" property="newDeviceInd" />
+    <result column="MODIFIEDIND" jdbcType="VARCHAR" property="modifiedInd" />
+    <result column="TAXIIND" jdbcType="VARCHAR" property="taxiInd" />
+    <result column="LICENSENO" jdbcType="VARCHAR" property="licenseNo" />
+    <result column="LICENSENOA" jdbcType="VARCHAR" property="licenseNoa" />
+    <result column="LICENSECOLORCODE" jdbcType="VARCHAR" property="licenseColorCode" />
+    <result column="CARKINDCODE" jdbcType="VARCHAR" property="carKindCode" />
+    <result column="HKFLAG" jdbcType="VARCHAR" property="hkFlag" />
+    <result column="HKLICENSENO" jdbcType="VARCHAR" property="hkLicenseNo" />
+    <result column="ENGINENO" jdbcType="VARCHAR" property="engineNo" />
+    <result column="VINNO" jdbcType="VARCHAR" property="vinNo" />
+    <result column="FRAMENO" jdbcType="VARCHAR" property="frameNo" />
+    <result column="WITHINCHINAIND" jdbcType="VARCHAR" property="withInChinaInd" />
+    <result column="RUNAREACODE" jdbcType="VARCHAR" property="runAreaCode" />
+    <result column="RUNAREANAME" jdbcType="VARCHAR" property="runAreaName" />
+    <result column="RUNMILES" jdbcType="DECIMAL" property="runMiles" />
+    <result column="ENROLLDATE" jdbcType="TIMESTAMP" property="enrollDate" />
+    <result column="USEYEARS" jdbcType="DECIMAL" property="useYears" />
+    <result column="MODELCODE" jdbcType="VARCHAR" property="modelCode" />
+    <result column="MAKE" jdbcType="VARCHAR" property="make" />
+    <result column="BRANDNAME" jdbcType="VARCHAR" property="brandName" />
+    <result column="COUNTRYNATURE" jdbcType="VARCHAR" property="countryNature" />
+    <result column="COUNTRYCODE" jdbcType="VARCHAR" property="countryCode" />
+    <result column="USENATURECODE" jdbcType="VARCHAR" property="useNatureCode" />
+    <result column="BUSINESSCLASSCODE" jdbcType="VARCHAR" property="businessClassCode" />
+    <result column="LONGLOADPERMIT" jdbcType="VARCHAR" property="longLoadPermit" />
+    <result column="WIDELOADPERMIT" jdbcType="VARCHAR" property="wideLoadPermit" />
+    <result column="SEATCOUNT" jdbcType="DECIMAL" property="seatCount" />
+    <result column="ADDSEATCOUNT" jdbcType="DECIMAL" property="addSeatCount" />
+    <result column="TONCOUNT" jdbcType="DECIMAL" property="tonCount" />
+    <result column="EXHAUSTSCALE" jdbcType="DECIMAL" property="exhaustScale" />
+    <result column="POWER" jdbcType="DECIMAL" property="power" />
+    <result column="DOORCOUNT" jdbcType="DECIMAL" property="doorCount" />
+    <result column="COLORCODE" jdbcType="VARCHAR" property="colorCode" />
+    <result column="SAFEDEVICE" jdbcType="VARCHAR" property="safeDevice" />
+    <result column="PARKSITE" jdbcType="VARCHAR" property="parkSite" />
+    <result column="VEHICLESTATUSE" jdbcType="VARCHAR" property="vehicleStatuse" />
+    <result column="DRIVEMODE" jdbcType="VARCHAR" property="driveMode" />
+    <result column="OWNERADDRESS" jdbcType="VARCHAR" property="ownerAddress" />
+    <result column="DISTRICT" jdbcType="VARCHAR" property="district" />
+    <result column="LARGEDISTRICT" jdbcType="VARCHAR" property="largeDistrict" />
+    <result column="ADDRESSTYPE" jdbcType="VARCHAR" property="addressType" />
+    <result column="OTHERNATURE" jdbcType="VARCHAR" property="otherNature" />
+    <result column="RATECODE" jdbcType="VARCHAR" property="rateCode" />
+    <result column="MAKEDATE" jdbcType="VARCHAR" property="makeDate" />
+    <result column="CARUSAGE" jdbcType="VARCHAR" property="carUsage" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
+    <result column="ESTIMATEVALUE" jdbcType="DECIMAL" property="estimateValue" />
+    <result column="PURCHASEPRICE" jdbcType="DECIMAL" property="purchasepPrice" />
+    <result column="ACTUALVALUE" jdbcType="DECIMAL" property="actualValue" />
+    <result column="INVOICENO" jdbcType="VARCHAR" property="inVoiceNo" />
+    <result column="USELIMITATIONS" jdbcType="VARCHAR" property="useLimitations" />
+    <result column="LASTINSURER" jdbcType="VARCHAR" property="lastInsurer" />
+    <result column="PREVIOUSPOLICYNO" jdbcType="VARCHAR" property="previousPolicyNo" />
+    <result column="PREVIOUSEXPIRYDATE" jdbcType="TIMESTAMP" property="previousExpiryDate" />
+    <result column="CARCHECKSTATUS" jdbcType="VARCHAR" property="carCheckStatus" />
+    <result column="CARCHECKREASON" jdbcType="VARCHAR" property="carCheckReason" />
+    <result column="CARCHECKER" jdbcType="VARCHAR" property="carChecker" />
+    <result column="CARCHECKTIME" jdbcType="VARCHAR" property="carCheckTime" />
+    <result column="RELIEVINGAREACODE" jdbcType="VARCHAR" property="relievingAreaCode" />
+    <result column="HIREPURCHASE" jdbcType="VARCHAR" property="hirePurchase" />
+    <result column="LOCALVEHICLEIND" jdbcType="VARCHAR" property="localvehicleInd" />
+    <result column="GLASSTYPE" jdbcType="VARCHAR" property="glassType" />
+    <result column="PECCANCYRECORD" jdbcType="VARCHAR" property="peccancyRecord" />
+    <result column="DAMAGEDFACTORGRADE" jdbcType="VARCHAR" property="damagedFactorGrade" />
+    <result column="LOADTYPE" jdbcType="VARCHAR" property="loadType" />
+    <result column="REPAIRFACTORYTYPE" jdbcType="VARCHAR" property="repairFactoryType" />
+    <result column="LICENSETYPECODE" jdbcType="VARCHAR" property="licenseTypeCode" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="PRINTBRANDNAME" jdbcType="VARCHAR" property="printBrandName" />
+    <result column="ALIASCODE" jdbcType="VARCHAR" property="aliasCode" />
+    <result column="COMPLETEKERBMASS" jdbcType="DECIMAL" property="completeKerbMass" />
+    <result column="VEHICLECLASS" jdbcType="VARCHAR" property="vehicleClass" />
+    <result column="VEHICLETYPE" jdbcType="VARCHAR" property="vehicleType" />
+    <result column="VEHICLEBODYTYPE" jdbcType="VARCHAR" property="vehicleBodyType" />
+    <result column="REJECTIND" jdbcType="VARCHAR" property="rejectInd" />
+    <result column="HIREPURCHASECODE" jdbcType="VARCHAR" property="hirePurchaseCode" />
+    <result column="DRIVERLIMITATIONS" jdbcType="VARCHAR" property="driverLimitations" />
+    <result column="HKRISKCODE" jdbcType="VARCHAR" property="hkRiskCode" />
+    <result column="CERTIFICATEDATE" jdbcType="TIMESTAMP" property="certificateDate" />
+    <result column="MOTORCOMMISSION" jdbcType="DECIMAL" property="motorCommission" />
+    <result column="MOTORREBATE" jdbcType="DECIMAL" property="motorRebate" />
+    <result column="MOTORCOMMISSIONDEDUCTIBLE" jdbcType="DECIMAL" property="motorCommissionDeductible" />
+    <result column="FIXIND" jdbcType="VARCHAR" property="fixInd" />
+    <result column="IDENTIFYTYPE" jdbcType="VARCHAR" property="identifyType" />
+    <result column="IDENTIFYNUMBER" jdbcType="VARCHAR" property="identifyNumber" />
+    <result column="CHANGEREGIONDATE" jdbcType="TIMESTAMP" property="changeRegionDate" />
+    <result column="SETTLEADDRESSCODE" jdbcType="VARCHAR" property="settleAddressCode" />
+    <result column="USENATURESHOW" jdbcType="VARCHAR" property="useNatureShow" />
+    <result column="ATTACHNATURE" jdbcType="VARCHAR" property="attachNature" />
+    <result column="CARUSETYPE" jdbcType="VARCHAR" property="carUseType" />
+    <result column="CARTYPECODE" jdbcType="VARCHAR" property="carTypeCode" />
+    <result column="CARKINDCODESHOW" jdbcType="VARCHAR" property="carKindCodeShow" />
+    <result column="CARNEWOLDFLAG" jdbcType="VARCHAR" property="carNewOldFlag" />
+    <result column="SUBPOLICYNO" jdbcType="VARCHAR" property="subPolicyno" />
+    <result column="MOTORTYPE" jdbcType="VARCHAR" property="motorType" />
+    <result column="PREVIOUSSTARTDATE" jdbcType="TIMESTAMP" property="previousStartDate" />
+    <result column="NODAMAGEYEARS" jdbcType="DECIMAL" property="noDamageYears" />
+    <result column="PASTLICENSENO" jdbcType="VARCHAR" property="pastLicenseNo" />
+    <result column="ROUTESTARTPOINT" jdbcType="VARCHAR" property="routeStartPoint" />
+    <result column="ROUTEENDPOLINT" jdbcType="VARCHAR" property="routeEndPolint" />
+    <result column="FACTORY" jdbcType="VARCHAR" property="factory" />
+    <result column="FACTORYID" jdbcType="VARCHAR" property="factoryId" />
+    <result column="CARBRAND" jdbcType="VARCHAR" property="carBrand" />
+    <result column="BRANDID" jdbcType="VARCHAR" property="brandId" />
+    <result column="FAMILYNAME" jdbcType="VARCHAR" property="familyName" />
+    <result column="FAMILYCODE" jdbcType="VARCHAR" property="familyCode" />
+    <result column="UPDATETIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="HAZARDTYPE" jdbcType="VARCHAR" property="hazardType" />
+    <result column="VEHICLECATEGORY" jdbcType="VARCHAR" property="vehicleCategory" />
+    <result column="COLORNAME" jdbcType="VARCHAR" property="colorName" />
+    <result column="PREVIOUSPRPALLCOMPANY" jdbcType="VARCHAR" property="previousPrpallCompany" />
+    <result column="GROUPCODE" jdbcType="VARCHAR" property="groupCode" />
+    <result column="SIMPLEFRAMENO" jdbcType="VARCHAR" property="simpleFrameNo" />
+    <result column="CHGOWNERFLAG" jdbcType="VARCHAR" property="chgOwnerFlag" />
+    <result column="CARKINDSHOWSUB" jdbcType="VARCHAR" property="carKindShowSub" />
+    <result column="TRANSFERDATE" jdbcType="TIMESTAMP" property="transferDate" />
+    <result column="LOANVEHICLEFLAG" jdbcType="VARCHAR" property="loanVehicleFlag" />
+    <result column="SINGEINDATE" jdbcType="TIMESTAMP" property="singeInDate" />
+    <result column="ADJUSTOFMAIN" jdbcType="DECIMAL" property="adjustOfMain" />
+    <result column="ADJUSTRATEOFMAIN" jdbcType="DECIMAL" property="adjustRateOfMain" />
+    <result column="ENERGYTYPECODE" jdbcType="VARCHAR" property="energyTypeCode" />
+    <result column="CAROWNERTYPE" jdbcType="VARCHAR" property="carOwnerType" />
+    <result column="NOLOCALCARFLAG" jdbcType="VARCHAR" property="noLocalCarFlag" />
+    <result column="NEWUSENATURESHOW" jdbcType="VARCHAR" property="newUseNatureShow" />
+    <result column="NEWCARUSETYPE" jdbcType="VARCHAR" property="newCarUseType" />
+    <result column="NEWCARKIND" jdbcType="VARCHAR" property="newCarkind" />
+    <result column="NEWCARKINDSUB" jdbcType="VARCHAR" property="newCarkindSub" />
+    <result column="NEWCARKINDCODESHOW" jdbcType="VARCHAR" property="newCarkindCodeShow" />
+    <result column="PURCHASEPRICE" jdbcType="DECIMAL" property="purchasePrice" />
+    <result column="ISSUEDATE" jdbcType="TIMESTAMP" property="issueDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    POLICYNO, PLANCODE, RISKCODE, ITEMNO, INSUREDTYPECODE, CARINSUREDRELATION, CAROWNER, 
+    FLEETNAME, CLAUSETYPE, AGREEDRIVERIND, NEWDEVICEIND, MODIFIEDIND, TAXIIND, LICENSENO, 
+    LICENSENOA, LICENSECOLORCODE, CARKINDCODE, HKFLAG, HKLICENSENO, ENGINENO, VINNO, 
+    FRAMENO, WITHINCHINAIND, RUNAREACODE, RUNAREANAME, RUNMILES, ENROLLDATE, USEYEARS, 
+    MODELCODE, MAKE, BRANDNAME, COUNTRYNATURE, COUNTRYCODE, USENATURECODE, BUSINESSCLASSCODE, 
+    LONGLOADPERMIT, WIDELOADPERMIT, SEATCOUNT, ADDSEATCOUNT, TONCOUNT, EXHAUSTSCALE, 
+    POWER, DOORCOUNT, COLORCODE, SAFEDEVICE, PARKSITE, VEHICLESTATUSE, DRIVEMODE, OWNERADDRESS, 
+    DISTRICT, LARGEDISTRICT, ADDRESSTYPE, OTHERNATURE, RATECODE, MAKEDATE, CARUSAGE, 
+    CURRENCY, ESTIMATEVALUE, PURCHASEPRICE, ACTUALVALUE, INVOICENO, USELIMITATIONS, LASTINSURER, 
+    PREVIOUSPOLICYNO, PREVIOUSEXPIRYDATE, CARCHECKSTATUS, CARCHECKREASON, CARCHECKER, 
+    CARCHECKTIME, RELIEVINGAREACODE, HIREPURCHASE, LOCALVEHICLEIND, GLASSTYPE, PECCANCYRECORD, 
+    DAMAGEDFACTORGRADE, LOADTYPE, REPAIRFACTORYTYPE, LICENSETYPECODE, REMARK, FLAG, PRINTBRANDNAME, 
+    ALIASCODE, COMPLETEKERBMASS, VEHICLECLASS, VEHICLETYPE, VEHICLEBODYTYPE, REJECTIND, 
+    HIREPURCHASECODE, DRIVERLIMITATIONS, HKRISKCODE, CERTIFICATEDATE, MOTORCOMMISSION, 
+    MOTORREBATE, MOTORCOMMISSIONDEDUCTIBLE, FIXIND, IDENTIFYTYPE, IDENTIFYNUMBER, CHANGEREGIONDATE, 
+    SETTLEADDRESSCODE, USENATURESHOW, ATTACHNATURE, CARUSETYPE, CARTYPECODE, CARKINDCODESHOW, 
+    CARNEWOLDFLAG, SUBPOLICYNO, MOTORTYPE, PREVIOUSSTARTDATE, NODAMAGEYEARS, PASTLICENSENO,
+    ROUTESTARTPOINT, ROUTEENDPOLINT, FACTORY, FACTORYID, CARBRAND, BRANDID, FAMILYNAME, 
+    FAMILYCODE, UPDATETIME, HAZARDTYPE, VEHICLECATEGORY, COLORNAME, PREVIOUSPRPALLCOMPANY, 
+    GROUPCODE, SIMPLEFRAMENO, CHGOWNERFLAG, CARKINDSHOWSUB, TRANSFERDATE, LOANVEHICLEFLAG, 
+    SINGEINDATE, ADJUSTOFMAIN, ADJUSTRATEOFMAIN, ENERGYTYPECODE, CAROWNERTYPE, PURCHASEPRICE, ISSUEDATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.chinacoal.ins.proposal.car.pojo.GuPolicyItemMotorKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from GUPOLICYITEMMOTOR
+    where POLICYNO = #{policyno,jdbcType=VARCHAR}
+      and PLANCODE = #{plancode,jdbcType=VARCHAR}
+      and RISKCODE = #{riskcode,jdbcType=VARCHAR}
+      and ITEMNO = #{itemno,jdbcType=DECIMAL}
+  </select>
+
+  <select id="findOwnerBySubPolicyNo" parameterType="java.lang.String" resultType="com.chinacoal.ins.proposal.car.pojo.GuPolicyItemMotor">
+    select
+      t.CarOwnerType as carOwnerType,
+      t.CarOwner       as carOwner,
+      t.IdentifyType   as identifyType,
+      t.IdentifyNumber as identifyNumber
+    from gupolicyitemmotor t
+    <where>
+      <if test="_parameter != null">
+        t.SUBPOLICYNO = #{subPolicyNo,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!-- 根据分单号查询 -->
+  <select id="findBySubPolicyNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select t.*
+    from GUPOLICYITEMMOTOR t
+    <where>
+      <if test="_parameter != null">
+        t.SUBPOLICYNO = #{subPolicyNo,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <!-- 根据分单号查询 -->
+  <select id="findAllMass" parameterType="java.lang.String" resultType="java.math.BigDecimal">
+    select t.CompleteKerbMass  as  allMass
+    from GupolicyCarShipTax t
+    <where>
+      <if test="_parameter != null">
+        t.POLICYNO = #{policyNo,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

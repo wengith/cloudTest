@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <title>自主研发基础平台</title>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link type="image/x-icon" href="./img/favicon/arch.png" rel="icon">
+ <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+ <!-- 新 Bootstrap 核心 CSS 文件 -->
+ <link rel="stylesheet" href="./plugin/bootstrap/css/bootstrap.min.css">
+ <link rel="stylesheet" href="./plugin/adminlte2/AdminLTE.min.css">
+ <link rel="stylesheet" href="./plugin/adminlte2/skins/_all-skins.min.css">
+ <link type="text/css" rel="stylesheet" href="./plugin/bootstrap-table/dist/bootstrap-table.min.css">
+ <link type="text/css" rel="stylesheet" href="./plugin/bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable.css" />
+ <!--选择框-->
+ <link type="text/css" rel="stylesheet" href="./plugin/select2-master/dist/css/select2.min.css">
+ <link type="text/css" rel="stylesheet" href="./plugin/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+ <link type="text/css" rel="stylesheet" href="./plugin/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"/>
+ <link rel="stylesheet" href="./plugin/font-awesome-4.7.0/css/font-awesome.min.css"/>
+ <!-- 下拉菜单组件css -->
+ <!--  <link rel="stylesheet" href="./plugin/dropdowns/dist/css/dropdowns-enhancement.min.css"/> -->
+ <!--文件上传组件-->
+ <link rel="stylesheet" href="./plugin/bootstrap-fileinput/css/fileinput.min.css"/>
+ <link rel="stylesheet" href="./plugin/bootstrap-fileinput/themes/explorer/theme.min.css"/>
+ <!--icheck-->
+ <link rel="stylesheet" href="./plugin/icheck-1.x/skins/all.css" />
+ <!--ztree-->
+ <link rel="stylesheet" href="./plugin/zTree_v3/css/zTreeStyle/zTreeStyle.css" />
+ <!--引入bootstraptab标签页文件 -->
+ <link rel="stylesheet" href="./plugin/bootstrap-tab/css/bootstrap-tab.css" />
+ <!--自定义字体库图标-->
+ <link rel="stylesheet" href="./css/fonts/fc-fonts/iconfont.css" />
+ <!--引入自定义 CSS 文件 -->
+ <link rel="stylesheet" href="./css/style.css" />
+ <script type="text/javascript">
+  window.appType = 'dev';
+//浮动框回调函数
+window.CloseFloatBoxFunction = {};
+</script>
+<script type="text/javascript" charset="utf-8" src="/plugin/jquery1.11.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="/plugin/adminlte2/adminlte.min.js"></script> -->
+<script src="./plugin/requirejs/require.js"></script>
+<!--版本号控制-->
+<script>
+  document.write("<script src='./page/version.js?v=" + new Date().getTime() + "'><" + "/script>");
+</script>
+</head>
+<body class="skin-blue sidebar-mini wysihtml5-supported sidebar-collapse" style="height: auto; min-height: 100%;">
+  <!-- 标签页的弹出菜单 -->
+  <div class = "popUpMenu">
+    <ul>
+      <li onclick = "jy_menu(0)">刷新</li>
+      <li onclick = "jy_menu(1)">刷新全部</li>
+      <li onclick = "jy_menu(2)">关闭当前页</li>
+      <li onclick = "jy_menu(3)">关闭其他页</li>
+    </ul>
+  </div>
+  <input type="hidden" name="jsessionid" id="jsessionid" value="">
+  <div class="wrapper" style="height: auto; min-height: 100%;background-color: #ffffff;" id="app">
+    <!--头部信息-->
+    <header class="main-header">
+      <a href="index2.html" class="logo" style="background: #222;padding: 0px;">
+        <span style="margin-top: -5px;"><span class="color-white font-weight-bolder"><img src="/img/arch6-logo.png" width="30px" height="30px"></span></span>
+      </a>
+      <nav class="navbar navbar-static-top navbar-inverse" role="navigation">
+        <a href="#" class="sys-title" data-toggle="push-menu" role="button">
+          自主研发基础平台
+        </a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" id="side-bar">
+          <ul class="nav navbar-nav navbar-right">
+           <li>
+            <div class="media padding-top-8 color-white" id ="userData">
+
+            </div>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle js-activated"><i
+               class="fa fa-caret-down fa-lg "></i></a>
+              <ul class="dropdown-menu treeview-menu">
+                <li>
+                 <!-- <a href="javascript:$('.addshortcut').trigger('click');"  target="_blank"><i class="fa fa-user fa-fw" >个性配置</i></a> -->
+                 <a href="javascript:;" data-router="#" data-title class="addshortcut" target="_blank"><i class="fa fa-user fa-fw" >个性配置</i></a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                  <a href="javascript:;" class="" id="logout"><i class="fa fa-sign-out" >重新登录</i></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!--左侧信息-->
+    <aside class="main-sidebar" style="position:absolute;
+     z-index: 850;">
+      <section class="sidebar" style="height: auto;">
+        <!--左侧菜单-->
+        <div class="aside-menu" id="moreMenu">
+        </div>
+      </section>
+    </aside>
+    <section class="content-wrapper">
+      <aside class="drawer-sidebar">
+        <section class="drawer-menu">
+          <div class="drawer-menu-items">
+            <ul class="level2-menus" style="display: none;width: 100%">
+
+            </ul>
+          </div>
+          <div class="toggle">
+            <i class="fc fc-indent"></i>
+            <i class="fc fc-outdent" style="display: none;"></i>
+            <div class="shape"></div>
+          </div>
+        </section>
+      </aside>
+      <section id="main-content">
+      </section>
+    </section>
+    <div class="footer">
+      <div class="col-md-12 column clean-padding-left-right">
+        <div class="app-footer">
+         版本号 V6.2.0.RELEASE
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- 用户信息 -->
+<script id="userDataTml" type="text/x-jsrender">
+  <a class="media-left media-middle" href="#">
+   <img class="avatar" width="30" height="30" alt="{{:name}}" src="{{:img}}">
+ </a>
+ <div class="media-body width-50" >
+   <h5 class="media-heading">{^{:code}}</h5>
+   {^{:name}}
+  </div>
+</script>
+<script src="./page/templates/layout/starter/index_starter.js"></script>
+<!-- 给标签页中的系统外的页面要使用的iframe模板制作的隐藏的容器 -->
+<div id="outSystemPage" hidden="true"></div>
+</body>
+</html>

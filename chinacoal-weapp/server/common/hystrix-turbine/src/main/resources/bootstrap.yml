@@ -1,0 +1,11 @@
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: ${spring.application.name}
+server:
+  port: 17040
+spring:
+  application:
+    name: hystrix-turbine
+  messages:
+    basename: i18n/messages

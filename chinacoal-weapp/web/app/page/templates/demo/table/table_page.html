@@ -1,0 +1,291 @@
+<script id="queryFormTmpl" type="text/x-jsrender">
+
+<div id="tableDataPage">
+    <div class="col-md-12 column" >
+        <div class="row clearfix">
+            <div class="col-md-12 column background-color-white padding-left-right-base box panel box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">查询后台的列表展示使用table_data.js</h3>
+                </div>
+                <div class="tabbable boxbody">
+                    <div class="tab-content list-table">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 column" style="margin-bottom: 20px;">
+    <div class="box-header with-border">
+        <h3 class="box-title">代码示例</h3>
+    </div>
+    <div class="tabbable boxbody">
+        <textarea class="col-md-10 column" disabled="disabled" style="width:100%;height: 500px;background-color: #f5f5f5;border: none;" >
+            /**
+             * table展示额初始化部分其中的view和callback都是table_data.js中需要配置的初始化参数
+             */
+            this.params.table_data = table_data.show({
+                view: {
+                    apiName: 'search_user',
+                    //本模块service.js中定义的apiName
+                    isRightAway: true,
+                    columns: this.columns,
+                    bts: this.bts,
+                },
+                callback: {
+                    callSearch:function() {
+                        return true;//返回true才会执行查询，可以进行查询前校验，比如日期大小等
+                    },
+                }
+            });
+            /**
+             * table的模板
+             * data：数据对象中的属性
+             * label：表头的文字名称
+             * orderSequence：是否对该列添加排序功能
+             * render：在数据展示前，对数据进行处理
+             */
+            columns: [{
+                data: "id",
+                label: '<input id="checkAll" name="checkAll" type="checkbox" class="checkAll">&nbsp;&nbsp;' + UtilMsg.tableNumber, //table显示的标题 国际化内容：序号
+                render:function(data, row, displayIndex) {
+                    return '&nbsp;&nbsp;<input name="checkCode" type="checkbox" value="' + data + '" data-id="'+row.userCode+'" />';
+                }
+            },{
+                label: "用户代码",
+                orderSequence:true,
+                data: 'userCode'
+            }, {
+                label: "用户名称",
+                data: 'userName'
+            }, {
+                label:"邮箱",
+                data: 'email'
+            }, {
+                label:"性别",
+                data: 'sex'
+            }, {
+                label:"密码生效时间",
+                orderSequence:true,
+                data: 'passwordSetDate',
+                render:function(data) {
+                    return new Date(data).Format("yyyy-MM-dd");
+                }
+            }, {
+                label: "密码失效时间" ,
+                data: 'passwordExpireDate',
+                render:function(data) {
+                    return new Date(data).Format("yyyy-MM-dd");
+                }
+            },{
+                label: "操作",
+                data: 'id',
+                render:function(data, row) {
+                    let str = '';
+                    //str += '<a href="#" title="权限配置"> <i class="fa fa-eye fa-lg view" data-id="'+data+'"></i></a>&nbsp;';
+                    str += '<a href="#" title="增加详细信息"> <i class="fa fa-address-card-o fa-lg detail" data-id='+JSON.stringify(row)+'></i></a>&nbsp;';
+                    str += '<a href="#" title="修改"> <i class="fa fa-pencil-square-o fa-lg update" data-id='+JSON.stringify(row)+'></i></a>&nbsp;';
+                    str += '<a href="#" title="删除" ><i class="fa fa-trash-o fa-lg delete" data-id="'+data+'"></i></a>&nbsp;';
+                    return str;
+                }
+            }]
+        </textarea>
+    </div>
+  
+</div>
+<div id="search-panel ajaxTablePage">
+    <div class="col-md-12 column" style="margin-bottom: 20px;">
+        <div class="row client">
+            <div class="col-md-12 column background-color-white padding-left-right-base box panel box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">查询后台的列表展示在前端进行分页</h3>
+                </div>
+                <div class="tabbable boxbody">
+                    <div class="tab-content list-table">
+                        <table class="table" id="clients" style="width: 100%">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 column" style="margin-bottom: 50px;">
+    <div class="box-header with-border">
+        <h3 class="box-title">代码示例</h3>
+    </div>
+    <div class="tabbable boxbody">
+        <textarea class="col-md-10 column" style="width:100%;height: 500px;background-color: #f5f5f5;border: none;" >
+            localColumns: [{
+                "title": "服务名称",
+                "width":"25%",
+                "data": 'serviceName'
+              },{
+                "title": "服务名称",
+                "width":"25%",
+                "data": 'address'
+              },{
+                "title": "服务端口",
+                "width":"25%",
+                "data": 'port'
+              },{
+                "title": "服务状态",
+                "width":"25%",
+                "data": 'status',
+                render: function ( data, type, row, meta ) {
+                  if(data=='PASSING'){
+                    return '<span class="label label-success">'+data+'</span>';
+                  }else if(data=='WARING'){
+                    return '<span class="label label-warning">'+data+'</span>';
+                  }else if(data=='CRITICAL'){
+                    return '<span class="label label-danger">'+data+'</span>';
+                  }else{
+                    return '<span class="label label-default">'+data+'</span>';
+                  }
+                }
+              }],
+              http.get({
+              apiName: 'findEurekaInstances',
+              cache:false,
+              async:false,
+              type: 'get',
+              headers: {
+                Authorization: "Arch6WithCloud "+localStorage.getItem("jwt")
+              }, 
+              xhrFields: {
+                withCredentials: true
+              },
+              success:function(data) {
+                //$.templates.instanceDataTml.link("#clients",{instances:data.data});
+                ajax_table._showSimpleTablePage($("#clients"),data.data,page.localColumns,null);
+              }
+            });
+        </textarea>
+    </div>
+  
+</div>
+<div id="search-panel rollTablePage">
+    <div class="col-md-12 column" style="margin-bottom: 50px;">
+        <div class="row client">
+            <div class="col-md-12 column background-color-white padding-left-right-base box panel box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">查询后台的列表展示滚动加载进行分页</h3>
+                </div>
+                <div class="tabbable boxbody">
+                    <div class="tab-content list-table" id="rollOutSide" style="width: 100%;overflow-x: hidden;height: 300px;overflow-y: auto;">
+                        <table class="table" id="rollPage" style="width: 95%">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 column" style="margin-bottom: 20px;">
+    <div class="box-header with-border">
+        <h3 class="box-title">代码示例</h3>
+    </div>
+    <div class="tabbable boxbody">
+        <textarea class="col-md-10 column" disabled="disabled" style="width:100%;height: 500px;background-color: #f5f5f5;border: none;" >
+            rollPageColumns: [{
+            "title": "编码",
+            "width":"9%",
+            "data": 'code'
+          },{
+            "title": "编码排序方式",
+            "width":"9%",
+            "data": 'codeDesc'
+          },{
+            "title": "判断标志",
+            "width":"9%",
+            "data": 'flag'
+          },{
+            "title": "序号",
+            "width":"9%",
+            "data": 'id'
+          },{
+            "title": "插入时间",
+            "width":"9%",
+            "data": 'insertTimeForHis'
+          },{
+            "title": "语言",
+            "width":"9%",
+            "data": 'language'
+          },{
+            "title": "操作时间",
+            "width":"9%",
+            "data": 'operateTimeForHis'
+          },{
+            "title": "类型编码",
+            "width":"9%",
+            "data": 'typeId'
+          },{
+            "title": "校验状态",
+            "width":"9%",
+            "data": 'validStatus'
+          },{
+            "title": "名称",
+            "width":"9%",
+            "data": 'value'
+          },{
+            "title": "服务状态",
+            "width":"9%",
+            "data": 'version'
+          }],
+
+           $.ajax({
+                url: "api/misc/sdd/code/queryPageListAuotComplete",
+                type: "post",
+                dataType: "json",
+                data: {
+                    pageNumber:page.params.pageNum,
+                    pageCount:page.params.pageListcount
+
+                },
+                beforeSend: function(request) {
+                  request.setRequestHeader("Authorization", "Arch6WithCloud " + localStorage.getItem("jwt"));
+                },
+                success: function(data) {
+                  ajax_table._rollPageTable($("#rollPage"),data.data,page.rollPageColumns,null);
+                }
+              });
+        //滚动加载分页的滚动条事件
+            $("#rollOutSide").on("scroll",function(){
+                //表格的高度
+                var tableHeight = parseInt($("#rollPage").css("height"))+20;
+                //框的高度
+                var outHeight = parseInt($("#rollOutSide").css("height"));
+                //滚动条出去的高度
+                var rollHeight = $("#rollOutSide").scrollTop();
+                //计算出的框的高度
+                var culOutHeight = tableHeight-rollHeight
+                //判断滚动条是否到底
+                if(culOutHeight<=outHeight){
+                    //滚动条到底后增加页码，进行下一次查询
+                    ++page.params.pageNum;
+                    $.ajax({
+                        url: "api/misc/sdd/code/queryPageListAuotComplete",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            pageNumber:page.params.pageNum,
+                            pageCount:page.params.pageListcount
+                        },
+                        beforeSend: function(request) {
+                          request.setRequestHeader("Authorization", "Arch6WithCloud " + localStorage.getItem("jwt"));
+                        },
+                        success: function(data) {
+                            //将查询结果放入table中
+                            var table = $('#rollPage').DataTable();
+                            table.rows.add(data.data).draw();
+                        }
+                    });
+                }
+            })
+        </textarea>
+    </div>
+  
+</div>
+</script>           

@@ -1,0 +1,11 @@
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: ${spring.application.name}
+server:
+  port: 19040
+spring:
+  application:
+    name: webserivce-server
+  messages:
+    basename: i18n/messages

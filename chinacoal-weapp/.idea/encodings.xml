@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database/mysql/rebuildDB.cmd" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/misc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/monolith/mono-echo-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/monolith/mono-robot-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/monolith/mono-robot-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/monolith/mono-sharding-robot-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/common/config-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/common/eureka-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/common/gateway-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/common/hystrix-dashboard" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/common/hystrix-turbine" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/misc/policytask-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/misc/policytask-server/src/main/java/com/chinacoal/ins/claim/car/dao/ClaimMoneyMapper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server/misc/policytask-server/src/main/java/com/chinacoal/ins/claim/car/dao/InjuredMapper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server/misc/policytask-server/src/main/java/com/chinacoal/ins/claim/car/pojo/PrpLcompensate.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server/misc/policytask-server/src/main/java/com/chinacoal/ins/claim/car/vo/CaseInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server/misc/policytask-server/src/main/java/com/chinacoal/ins/utils/Generator.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server/misc/policytask-server/src/main/resources/bootstrap-dev.yml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server/misc/policytask-server/src/main/resources/bootstrap-local.yml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server/misc/policytask-server/src/main/resources/bootstrap-pro.yml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/server/showcase/webservice-server" charset="UTF-8" />
+  </component>
+</project>

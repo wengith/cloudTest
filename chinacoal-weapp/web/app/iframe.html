@@ -1,0 +1,7 @@
+<iframe style="width: 100%;boxder:none" frameborder="0" src="" id="" onLoad="autoHeight(this)"></iframe>
+<script type="text/javascript">
+	var newId=localStorage.getItem("newId");
+	var router = "new_page.html?url="+localStorage.getItem("router")+"&";
+	$("#"+newId+" iframe").attr("src",router);
+	$("#"+newId+" iframe").attr("id",newId);
+</script>

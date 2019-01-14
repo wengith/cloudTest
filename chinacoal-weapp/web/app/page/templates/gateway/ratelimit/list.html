@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="./css/select2.a.css">
+</head>
+<script id="queryFormTmpl" type="text/x-jsrender">
+<div class="page-title">
+  &nbsp;
+    <a href="/">
+        <i class="fa fa-home fa-fw fa-lg"></i>
+        回到首页
+    </a>
+    / 限流方案管理
+</div>
+<div id="search-panel">
+    <div class="col-md-10 column" >
+        <div class="row clearfix">
+            <div class="col-md-12 column background-color-white padding-left-right-base box panel box-info">
+                <div class="box-header with-border">
+                </div>
+                <div class="tabbable boxbody">
+                    <div id="toolbar" class="btn-group">
+                        <button id="rt_add" type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                        </button>
+                    </div>
+                    <div class="tab-content list-table">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 column">
+        <div class="row margin-left-1x">
+            <div class="col-md-12 column background-color-component-default">
+                <div class="page-header margin-top-3x">
+                    <div><h5><span class="color-red font-weight-bolder">| </span>限流方案查询</h5></div>
+
+                    <form role="form" class="searchform">
+                    
+                     <div class="form-group query-border">
+                     <input type="text" class="form-control input-sm" name="method"  placeholder="方案"/>
+
+                        <select  id="type" name="type" 
+                        class="form-control input-sm"  type="text" >
+                      <option value=" " disabled selected style="display: none;">类型</option>
+                       <option value="1" >限流</option>
+                       <option value="2" >配额</option>    
+                      </select>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-search btn-sm btn-block">查询</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</script>           

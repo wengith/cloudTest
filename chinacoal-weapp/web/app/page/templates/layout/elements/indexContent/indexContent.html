@@ -1,0 +1,210 @@
+<script id="indexContentTml" type="text/x-jsrender">
+  <div class="content-wrapper" style="min-height: 100%;margin-left: 0px!important;background-color: transparent!important">
+    <!-- Main content -->
+    <section class="content clean-padding-left-right">
+      <!-- Main row -->
+      <div class="row">
+       <!-- Left col -->
+       <section class="col-lg-8 connectedSortable ui-sortable clean-padding-right">
+        <div class="box box-primary register">
+         <!-- Tabs within a box -->
+         <div class="box-header">
+          <h3 class="box-title">注册信息</h3>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table" id="clients" style="width: 100%">
+
+          </table>
+        </div>
+      </div>
+      <!-- /.box -->
+      <div class="box box-primary helpers">
+       <!-- Tabs within a box -->
+       <div class="box-header">
+        <h3 class="box-title">管理助手</h3>
+      </div>
+      <div class="box-body helpers" id="helpers">
+        <div class="nav-tabs-custom">
+         <!-- Tabs within a box -->
+         <ul class="nav nav-tabs">
+          <li class="active"><a href="#myResource" data-toggle="tab">我的资源</a></li>
+          <li><a href="#myFocus" data-toggle="tab">我的关注</a></li>
+        </ul>
+        <div class="tab-content no-padding">
+          <!-- Morris chart - Sales -->
+          <div class="tab-pane active" id="myResource" style="position: relative;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+           <div class="row">
+            <div class="col-md-4">
+             <ul class="resource">
+              <p class="resource-title">数据库</p>
+              <li class="item clearfix">
+               <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>分布式数据库 for MySQL</span></a></li>
+               <li class="item clearfix">
+                <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>MyCat的使用与集成</span></a>
+              </li>
+              <li class="item clearfix">
+                <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>内存数据库VoltDB</span></a>
+              </li>
+              <li class="item clearfix">
+                <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>Redis的集成与使用</span></a></li>
+              </ul>
+              <!--/数据库-->
+              <ul class="resource">
+               <p class="resource-title">中间件</p>
+               <li class="item clearfix">
+                <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>Tomcat</span>
+                </a>
+              </li>
+              <li class="item clearfix">
+                <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>Jboss</span></a></li>
+                <li class="item clearfix">
+                  <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>Weblogic12</span></a></li>
+                </ul>
+                <!--/中间件-->
+              </div>
+              <div class="col-md-4">
+               <ul class="resource">
+                <p class="resource-title">持续集成</p>
+                <li class="item clearfix">
+                 <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>Maven3</span></a></li>
+                 <li class="item clearfix">
+                  <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>Spring Boot</span></a></li>
+                  <li class="item clearfix">
+                   <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>Jenkins</span></a></li>
+                 </ul>
+                 <!--/fileupload-->
+               </div>
+               <div class="col-md-4">
+                 <ul class="resource">
+                  <p class="resource-title">文件上传</p>
+                  <li class="item clearfix">
+
+                   <a href="#" class="pull-left" id="j_upload_img_btn"><span class="category-icon icon-petadata"></span> <span>图片上传</span></a></li>
+                 </ul>
+                 <!-- 加载编辑器的容器 -->
+                 <textarea id="uploadEditor" style="display: none;"></textarea>
+                 <!--/持续集成-->
+                 <ul class="resource">
+                   <p class="resource-title">运维监控</p>
+                   <li class="item clearfix">
+                    <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>Spring Boot Admin</span></a></li>
+                    <li class="item clearfix">
+                     <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>ELK日志监控平台</span></a></li>
+                     <li class="item clearfix">
+                      <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>SpringCloud Sleuth</span></a></li>
+                    </ul>
+                    <!--/持续集成-->
+                  </div>
+                  <div class="col-md-4">
+                   <ul class="resource">
+                    <p class="resource-title">文档资料</p>
+                    <li class="item clearfix">
+                     <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>开发规范</span></a></li>
+                     <li class="item clearfix">
+                      <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>开发参考</span></a></li>
+                      <li class="item clearfix">
+                       <a href="#" class="pull-left"><span class="category-icon icon-petadata"></span> <span>开发指南</span></a></li>
+                     </ul>
+                     <!--/中间件-->
+                   </div>
+                 </div>
+               </div>
+               <div class="tab-pane" id="myFocus">
+
+              </div>
+           </div>
+         </div>
+       </div>
+       <div class="box-footer">
+         <a id="toggleContent" class="toggle-tile-btn">展开更多资源 <i class="fa fa-caret-down"></i></a>
+       </div>
+     </div>
+   </section>
+   <section class="col-lg-4 connectedSortable ui-sortable">
+
+     <div class="box box-primary toDoList">
+      <div class="box-header with-border">
+       <h3 class="box-title">待办事项</h3>
+     </div>
+     <!-- /.box-header -->
+     <div class="box-body" id="toDoList">
+
+     </div>
+     <!-- /.box-footer -->
+   </div>
+   <div class="box box-primary stars">
+    <div class="box-header with-border">
+     <h3 class="box-title">今日之星</h3>
+   </div>
+   <!-- /.box-header -->
+   <div class="box-body no-padding">
+     <ul class="users-list clearfix">
+      <li><img src="img/img/user1-128x128.jpg" alt="User Image"> <a class="users-list-name" href="#">Alexander
+       Pierce</a> <span class="users-list-date">Today</span></li>
+       <li><img src="img/img/user8-128x128.jpg" alt="User Image"> <a class="users-list-name" href="#">Norman</a>
+        <span class="users-list-date">Yesterday</span></li>
+        <li><img src="img/img/user7-128x128.jpg" alt="User Image"> <a class="users-list-name" href="#">Jane</a>
+         <span class="users-list-date">12 Jan</span></li>
+         <li><img src="img/img/user6-128x128.jpg" alt="User Image"> <a class="users-list-name" href="#">John</a>
+          <span class="users-list-date">12 Jan</span></li>
+          <li><img src="img/img/user2-160x160.jpg" alt="User Image"> <a class="users-list-name" href="#">Alexander</a>
+           <span class="users-list-date">13 Jan</span></li>
+           <li><img src="img/img/user5-128x128.jpg" alt="User Image"> <a class="users-list-name" href="#">Sarah</a>
+            <span class="users-list-date">14 Jan</span></li>
+            <li><img src="img/img/user4-128x128.jpg" alt="User Image"> <a class="users-list-name" href="#">Nora</a>
+             <span class="users-list-date">15 Jan</span></li>
+             <li><img src="img/img/user3-128x128.jpg" alt="User Image"> <a class="users-list-name" href="#">Nadia</a>
+              <span class="users-list-date">15 Jan</span></li>
+            </ul>
+            <!-- /.users-list -->
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer text-center clean-padding-bottom">
+           <a href="javascript::" class="uppercase">查看更多</a>
+         </div>
+         <!-- /.box-footer -->
+       </div>
+       <div class="box box-primary infos">
+        <!-- /.box-header -->
+        <div class="box-body contact">
+         <div class="row">
+          <div id="barCode" class="col-md-4">
+
+          </div>
+          <div class="info col-md-8">
+           <h4>自主研发基础平台</h4>
+           <div>
+            <p>分布式服务架构</p>
+            <p>快速高效开发</p>
+            <p>全面的平台解决方案</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+</section>
+<!-- right col -->
+</div>
+</section>
+</div>                 
+</script>
+<script id="toDoListDataTml" type="text/x-jsrender">
+  <ul class="todo-list ui-sortable">
+   <li class="item">
+    <span class="text"><i class="fa fa-bullseye"></i>&nbsp;审核任务</span>
+    <span class="text" style="float: right;color:gray;font-weight: bold;font-size: 14px;">10</span>
+  </li>
+  <!-- /.item -->
+  <li class="item">
+    <span class="text"><i class="fa fa-handshake-o"></i>&nbsp;交接任务</span>
+    <span class="text" style="float: right;color:gray;font-weight: bold;font-size: 14px;">12</span>
+  </li>
+  <!-- /.item -->
+  <li class="item">
+    <span class="text"><i class="fa fa-envelope-o"></i>&nbsp;邮寄任务</span>
+    <span class="text" style="float: right;color:gray;font-weight: bold;font-size: 14px;">120</span>
+  </li>
+  <!-- /.item -->
+</ul>
+</script>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- =======通过ins-framework-mybatis工具自动生成，请勿手工修改！======= -->
+<!-- =======本配置文件中定义的节点可在自定义配置文件中直接使用！       ======= -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<mapper namespace="ins.platform.robot.dao.DemoRobotMainDao">
+	<!-- 通用查询结果对象-->
+	<resultMap id="BaseResultMap" type="ins.platform.robot.po.DemoRobotMain">
+		 <id column="Id" property="id"/> 
+		 <result column="robot_sn" property="robotSn"/> 
+		 <result column="robot_height" property="robotHeight"/> 
+		 <result column="nickname" property="nickname"/> 
+		 <result column="recharge_count" property="rechargeCount"/> 
+		 <result column="manufacture_name" property="manufactureName"/> 
+		 <result column="manufacture_date" property="manufactureDate"/> 
+		 <result column="com_code" property="comCode"/> 
+		 <result column="version" property="version"/> 
+		 <result column="Insert_Time_For_His" property="insertTimeForHis"/> 
+		 <result column="Operate_Time_For_His" property="operateTimeForHis"/> 
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 Id, robot_sn, robot_height, nickname, recharge_count,
+		 manufacture_name, manufacture_date, com_code, version, Insert_Time_For_His,
+		 Operate_Time_For_His
+	</sql>
+
+	<!-- 按对象查询记录的WHERE部分 -->
+	<sql id="Base_Select_By_Entity_Where">
+		<if test="id != null" >
+			and Id = #{id}
+		</if>
+		<if test="robotSn != null" >
+			and robot_sn = #{robotSn}
+		</if>
+		<if test="robotHeight != null" >
+			and robot_height = #{robotHeight}
+		</if>
+		<if test="nickname != null" >
+			and nickname = #{nickname}
+		</if>
+		<if test="rechargeCount != null" >
+			and recharge_count = #{rechargeCount}
+		</if>
+		<if test="manufactureName != null" >
+			and manufacture_name = #{manufactureName}
+		</if>
+		<if test="manufactureDate != null" >
+			and manufacture_date = #{manufactureDate}
+		</if>
+		<if test="comCode != null" >
+			and com_code = #{comCode}
+		</if>
+		<if test="version != null" >
+			and version = #{version}
+		</if>
+		<if test="insertTimeForHis != null" >
+			and Insert_Time_For_His = #{insertTimeForHis}
+		</if>
+		<if test="operateTimeForHis != null" >
+			and Operate_Time_For_His = #{operateTimeForHis}
+		</if>
+	</sql>
+
+	<!-- 按对象查询记录的SQL部分 -->
+	<sql id="Base_Select_By_Entity">
+		select
+			<include refid="Base_Column_List" />
+		from demo_robot_main
+		<where>
+			<include refid="Base_Select_By_Entity_Where" />
+		</where>
+	</sql>
+
+	<!-- 按主键查询一条记录 -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map">
+		select
+			<include refid="Base_Column_List" />
+		from demo_robot_main
+		where Id = #{param1}
+	</select>
+
+	<!-- 按主键List查询多条记录 -->
+	<select id="selectBatchByPrimaryKeys" resultMap="BaseResultMap" parameterType="map">
+		select
+			<include refid="Base_Column_List" />
+		from demo_robot_main
+		where Id in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+	<!-- 按对象查询一页记录（多条记录） -->
+	<select id="selectPage" resultMap="BaseResultMap" parameterType="ins.platform.robot.po.DemoRobotMain">
+		<include refid="Base_Select_By_Entity" />
+	</select>
+
+	<!-- 按主键删除一条记录 -->
+	<delete id="deleteByPrimaryKey" parameterType="map">
+		delete from demo_robot_main
+		where Id = #{param1}
+	</delete>
+
+	<!-- 按主键List删除多条记录 -->
+	<delete id="deleteBatchByPrimaryKeys" parameterType="map">
+		delete from demo_robot_main
+		where Id in 
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<!-- 完整插入一条记录-->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="ins.platform.robot.po.DemoRobotMain">
+		insert into demo_robot_main (Id, robot_sn, robot_height, nickname, recharge_count, 
+			manufacture_name, manufacture_date, com_code, version, Operate_Time_For_His)
+		values(#{id}, #{robotSn}, #{robotHeight}, #{nickname}, #{rechargeCount}, 
+			#{manufactureName}, #{manufactureDate}, #{comCode}, 1, now())
+	</insert>
+
+	<!-- 插入一条记录(为空的字段不操作) -->
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="ins.platform.robot.po.DemoRobotMain">
+		insert into demo_robot_main
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null" >
+				Id,
+			</if>
+			<if test="robotSn != null" >
+				robot_sn,
+			</if>
+			<if test="robotHeight != null" >
+				robot_height,
+			</if>
+			<if test="nickname != null" >
+				nickname,
+			</if>
+			<if test="rechargeCount != null" >
+				recharge_count,
+			</if>
+			<if test="manufactureName != null" >
+				manufacture_name,
+			</if>
+			<if test="manufactureDate != null" >
+				manufacture_date,
+			</if>
+			<if test="comCode != null" >
+				com_code,
+			</if>
+			version,
+			Operate_Time_For_His,
+		</trim>
+		values <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null" >
+				#{id},
+			</if>
+			<if test="robotSn != null" >
+				#{robotSn},
+			</if>
+			<if test="robotHeight != null" >
+				#{robotHeight},
+			</if>
+			<if test="nickname != null" >
+				#{nickname},
+			</if>
+			<if test="rechargeCount != null" >
+				#{rechargeCount},
+			</if>
+			<if test="manufactureName != null" >
+				#{manufactureName},
+			</if>
+			<if test="manufactureDate != null" >
+				#{manufactureDate},
+			</if>
+			<if test="comCode != null" >
+				#{comCode},
+			</if>
+			1,
+			now(),
+		</trim>
+	</insert>
+
+	<!-- 更新一条记录(为空的字段不操作) -->
+	<update id="updateSelectiveByPrimaryKey" useGeneratedKeys="true" keyProperty="id" parameterType="ins.platform.robot.po.DemoRobotMain">
+		update demo_robot_main
+		<set>
+			<if test="robotSn != null" >
+				robot_sn=#{robotSn},
+			</if>
+			<if test="robotHeight != null" >
+				robot_height=#{robotHeight},
+			</if>
+			<if test="nickname != null" >
+				nickname=#{nickname},
+			</if>
+			<if test="rechargeCount != null" >
+				recharge_count=#{rechargeCount},
+			</if>
+			<if test="manufactureName != null" >
+				manufacture_name=#{manufactureName},
+			</if>
+			<if test="manufactureDate != null" >
+				manufacture_date=#{manufactureDate},
+			</if>
+			<if test="comCode != null" >
+				com_code=#{comCode},
+			</if>
+			version=version+1,
+			Operate_Time_For_His=now(),
+		</set>
+		where Id = #{id}
+	</update>
+
+	<!-- 完整更新一条记录 -->
+	<update id="updateByPrimaryKey" useGeneratedKeys="true" keyProperty="id" parameterType="ins.platform.robot.po.DemoRobotMain">
+		update demo_robot_main
+		set robot_sn=#{robotSn},
+			robot_height=#{robotHeight},
+			nickname=#{nickname},
+			recharge_count=#{rechargeCount},
+			manufacture_name=#{manufactureName},
+			manufacture_date=#{manufactureDate},
+			com_code=#{comCode},
+			version=version+1,
+			Operate_Time_For_His=now()
+		where Id = #{id}
+	</update>
+
+</mapper>

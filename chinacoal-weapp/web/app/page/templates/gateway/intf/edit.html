@@ -1,0 +1,147 @@
+<div class="row" id="gateway-edit"></div>
+<script id="gatewayFormTmpl" type="text/x-jsrender">
+  <div class="row page-title">
+    <div class="col-lg-12">
+      <a href="/">
+        <i class="fa fa-home fa-fw fa-lg"></i>
+        回到首页
+      </a>
+      / 接口新增
+    </div>
+  </div>
+  <div class="row lookup recorded">
+    <div class="col-lg-12">
+      <form id="form" class="form-horizontal" role="form" method="post">
+        <div class="box panel box-info">
+          <div class="panel-collapse collapsegateway-edit in" id="collapseOne">
+            <div class="box-body">
+              <div id="div_error"></div>
+              <!--第一行-->
+              <div class="row">
+               <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="row form-group">
+                      <div class="col-xs-4">
+                        <label for="id" class="control-label "> <font
+                          color="#FF0000" size="+1" style="vertical-align: middle">*</font>
+                          接口id</label>
+                        </div>
+                        <div class="col-xs-6">
+                          <input id="id" name="id" class="form-control" data-link="gateway.id" type="text" />
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                  <div class="row form-group">
+                    <div class="col-xs-4">
+                      <label for="serviceId" class="control-label"> <font
+                        color="#FF0000" size="+1" style="vertical-align: middle">*</font>微服务ID</label>
+                      </div>
+                      <div class="col-xs-6">
+                        <input id="serviceId" name="serviceId" class="form-control" data-link="gateway.serviceId" type="text" />
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <!--第二行-->
+                  <div class="row">
+                  <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="row form-group">
+                      <div class="col-xs-4">
+                        <label for="path" class="control-label "> <font
+                          color="#FF0000" size="+1" style="vertical-align: middle">*</font>
+                          路径规则</label>
+                        </div>
+                        <div class="col-xs-6">
+                          <input id="path" name="path" class="form-control" data-link="gateway.path" type="text" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                      <div class="row form-group">
+                        <div class="col-xs-4">
+                          <label for="apiName" class="control-label">接口名称</label>
+                        </div>
+                        <div class="col-xs-6">
+                          <input id="apiName" name="apiName" class="form-control" data-link="gateway.apiName" type="text" />
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+               
+                    <!--第三行-->
+                    <div class="row">
+                       <div class="col-lg-6 col-md-6 col-xs-12">
+                      <div class="row form-group">
+                        <div class="col-xs-4">
+                          <label for="url" class="control-label "><font
+                            color="#FF0000" size="+1" style="vertical-align: middle">*</font>
+                            url</label>
+                          </div>
+                          <div class="col-xs-6">
+                            <input id="url" name="url" class="form-control" data-link="gateway.url" type="text" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="row form-group">
+                          <div class="col-xs-4">
+                            <label for="retryable" class="control-label "><font
+                              color="#FF0000" size="+1" style="vertical-align: middle">*</font>
+                              可重复操作</label>
+                            </div>
+                            <div class="col-xs-6"> 
+                             <input type="hidden" />
+                            <select data-link="gateway.retryable" id="retryable" name="retryable" 
+                            class="form-control select2">
+                    <option value="1" >是</option>
+                    <option value="2" >否</option>    
+                  </select>               
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                   <!--第四行-->
+                      <div class="row">
+                       <div class="col-lg-6 col-md-6 col-xs-12">
+                          <div class="row form-group">
+                            <div class="col-xs-4">
+                              <label for="enabled" class="control-label "><font
+                                color="#FF0000" size="+1" style="vertical-align: middle">*</font>
+                                是否开启</label>
+                              </div>
+                              <div class="col-xs-6">
+                        <input type="hidden" />
+                            <select data-link="gateway.enabled" id="enabled" name="enabled" 
+                            class="form-control select2">
+            <option value="1" >是</option>
+            <option value="2" >否</option>    
+                  </select>
+                              </div>
+                            </div>
+                          </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                          <div class="row form-group">
+                            <div class="col-xs-4">
+                              <label for="stripPrefix" class="control-label">前缀</label>
+                            </div>
+                            <div class="col-xs-6">
+                              <input id="stripPrefix" name="stripPrefix" class="form-control" data-link="gateway.stripPrefix" type="text" />
+                            </div>
+                          </div>
+                        </div>     
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="box box-tool-my">
+                    <div class="footer-my">
+                      <button type="submit" class="btn btn-danger btn-sm" style="display: none" id="btn-submit">保存</button>
+                      <button type="button" id="btn-close" class="btn btn-default btn-close btn-sm">关 闭</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </script>

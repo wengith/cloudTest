@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css"> 
+</style>
+
+</head>
+<body>
+
+      <div class="col-md-10" style="margin-top: 20px;">
+            <div style="width:110%;text-align:left;color: gray;border-bottom: 2px solid #df5f4a;"><p style="font-weight: bold;
+        font-size: 14px;">select2示例页面</p></div>
+            <br>
+        </div>
+
+  <div  class="page-title col-md-10" style="z-index:-1;margin-top: 5px;" placeholder>
+     <span>单选</span>
+  </div>
+   
+<div  class="col-md-10">
+   <select style="width:70%;overflow:visible;" class="example">  
+    <option></option>
+   </select>
+</div>
+
+<div class="page-title col-md-10" style="z-index:-1">
+     <span>多选</span>
+  </div>
+
+<div  class="col-md-10">
+   <select style="width:70%;overflow:visible;" class="example" multiple>  
+   </select>
+</div>
+
+<div class="page-title col-md-10" style="z-index:-1">
+     <span>加载本地json</span>
+  </div>
+
+<div  class="col-md-10">
+   <select style="width:70%;overflow:visible;" class="exampleLocal" multiple>  
+   </select>
+</div>
+
+  <div class="page-title col-md-10" style="z-index:-1">
+     <span>核心代码</span>
+  </div>
+
+<div class="col-md-10 column">
+  <textarea class="col-md-10 column" style="width:110%;height:1200px" >
+
+     $("select.js-data-example-ajax").each(
+        function() {
+            var $this = $(this);
+            $this.select2({
+                placeholder: "请输入关键字",
+                language : "zh-CN",// 指定语言为中文，国际化才起效
+                allowClear: true,
+                ajax : {
+                    url :url,
+                    dataType : 'json',
+                    delay : 250,// 延迟显示
+                    data : function(params) {
+                        return {
+                            id : params.term, // 搜索框内输入的内容，传递到Java后端的parameter为username
+                            page : params.page,// 第几页，分页哦
+                            rows : 10// 每页显示多少行
+                        };
+                    },
+                    beforeSend: function(request) {
+                         request.setRequestHeader("Authorization","Arch6WithCloud "+localStorage.getItem("JSESSIONID"));
+                    },
+                    // 分页
+                    processResults : function(data, params) {
+                        params.page = params.page || 1;
+
+                        return {
+                            results : data.data,// 后台返回的数据集
+                            pagination : {
+                                more : params.page < data.total// 总页数为10，那么1-9页的时候都可以下拉刷新
+                            }
+                        };
+                    },
+                    cache : false
+                },
+                escapeMarkup : function(markup) {
+                    return markup;
+                }, // let our custom formatter work
+                minimumInputLength : 0,// 最少输入一个字符才开始检索
+                templateResult : function(repo) {// 显示的结果集格式，这里需要自己写css样式，可参照demo
+                    // 正在检索
+                    if (repo.loading)
+                        return repo.text;
+
+                    var markup = "<table class='select2-result-repository clearfix'>" 
+                    + "<tr>"
+                    + "<td style='word-break:break-all;' width='300px'>" + repo.code + "</td>"
+                    + "<td width='400px' align='center' >" + repo.value + "</td>"
+                    + "</tr>"
+                    + "</table>"
+                    ;
+
+                    return markup;
+                }, 
+                templateSelection : function(repo) {
+                    if(repo.code==undefined||repo.value==undefined){
+                        return "请输入关键字";  
+                    }else{
+                         return repo.code||repo.value;
+                    }
+                }// 列表中选择某一项后显示到文本框的内容
+             });
+
+             });
+
+             
+</textarea>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+</script>
+
+
+<html>

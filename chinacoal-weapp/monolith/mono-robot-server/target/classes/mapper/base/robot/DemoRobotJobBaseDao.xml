@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- =======通过ins-framework-mybatis工具自动生成，请勿手工修改！======= -->
+<!-- =======本配置文件中定义的节点可在自定义配置文件中直接使用！       ======= -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<mapper namespace="ins.platform.robot.dao.DemoRobotJobDao">
+	<!-- 通用查询结果对象-->
+	<resultMap id="BaseResultMap" type="ins.platform.robot.po.DemoRobotJob">
+		 <id column="Id" property="id"/> 
+		 <result column="robot_id" property="robotId"/> 
+		 <result column="start_time" property="startTime"/> 
+		 <result column="end_time" property="endTime"/> 
+		 <result column="walk_count" property="walkCount"/> 
+		 <result column="consume_energy" property="consumeEnergy"/> 
+		 <result column="job_content" property="jobContent"/> 
+		 <result column="job_image" property="jobImage"/> 
+		 <result column="com_code" property="comCode"/> 
+		 <result column="version" property="version"/> 
+		 <result column="Insert_Time_For_His" property="insertTimeForHis"/> 
+		 <result column="Operate_Time_For_His" property="operateTimeForHis"/> 
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 Id, robot_id, start_time, end_time, walk_count,
+		 consume_energy, job_content, job_image, com_code, version,
+		 Insert_Time_For_His, Operate_Time_For_His
+	</sql>
+
+	<!-- 按对象查询记录的WHERE部分 -->
+	<sql id="Base_Select_By_Entity_Where">
+		<if test="id != null" >
+			and Id = #{id}
+		</if>
+		<if test="robotId != null" >
+			and robot_id = #{robotId}
+		</if>
+		<if test="startTime != null" >
+			and start_time = #{startTime}
+		</if>
+		<if test="endTime != null" >
+			and end_time = #{endTime}
+		</if>
+		<if test="walkCount != null" >
+			and walk_count = #{walkCount}
+		</if>
+		<if test="consumeEnergy != null" >
+			and consume_energy = #{consumeEnergy}
+		</if>
+		<if test="jobContent != null" >
+			and job_content = #{jobContent}
+		</if>
+		<if test="jobImage != null" >
+			and job_image = #{jobImage}
+		</if>
+		<if test="comCode != null" >
+			and com_code = #{comCode}
+		</if>
+		<if test="version != null" >
+			and version = #{version}
+		</if>
+		<if test="insertTimeForHis != null" >
+			and Insert_Time_For_His = #{insertTimeForHis}
+		</if>
+		<if test="operateTimeForHis != null" >
+			and Operate_Time_For_His = #{operateTimeForHis}
+		</if>
+	</sql>
+
+	<!-- 按对象查询记录的SQL部分 -->
+	<sql id="Base_Select_By_Entity">
+		select
+			<include refid="Base_Column_List" />
+		from demo_robot_job
+		<where>
+			<include refid="Base_Select_By_Entity_Where" />
+		</where>
+	</sql>
+
+	<!-- 按主键查询一条记录 -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map">
+		select
+			<include refid="Base_Column_List" />
+		from demo_robot_job
+		where Id = #{param1}
+	</select>
+
+	<!-- 按主键List查询多条记录 -->
+	<select id="selectBatchByPrimaryKeys" resultMap="BaseResultMap" parameterType="map">
+		select
+			<include refid="Base_Column_List" />
+		from demo_robot_job
+		where Id in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+	<!-- 按对象查询一页记录（多条记录） -->
+	<select id="selectPage" resultMap="BaseResultMap" parameterType="ins.platform.robot.po.DemoRobotJob">
+		<include refid="Base_Select_By_Entity" />
+	</select>
+
+	<!-- 按主键删除一条记录 -->
+	<delete id="deleteByPrimaryKey" parameterType="map">
+		delete from demo_robot_job
+		where Id = #{param1}
+	</delete>
+
+	<!-- 按主键List删除多条记录 -->
+	<delete id="deleteBatchByPrimaryKeys" parameterType="map">
+		delete from demo_robot_job
+		where Id in 
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<!-- 完整插入一条记录-->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="ins.platform.robot.po.DemoRobotJob">
+		insert into demo_robot_job (Id, robot_id, start_time, end_time, walk_count, 
+			consume_energy, job_content, job_image, com_code, version, 
+			Operate_Time_For_His)
+		values(#{id}, #{robotId}, #{startTime}, #{endTime}, #{walkCount}, 
+			#{consumeEnergy}, #{jobContent}, #{jobImage}, #{comCode}, 1, 
+			now())
+	</insert>
+
+	<!-- 插入一条记录(为空的字段不操作) -->
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="ins.platform.robot.po.DemoRobotJob">
+		insert into demo_robot_job
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null" >
+				Id,
+			</if>
+			<if test="robotId != null" >
+				robot_id,
+			</if>
+			<if test="startTime != null" >
+				start_time,
+			</if>
+			<if test="endTime != null" >
+				end_time,
+			</if>
+			<if test="walkCount != null" >
+				walk_count,
+			</if>
+			<if test="consumeEnergy != null" >
+				consume_energy,
+			</if>
+			<if test="jobContent != null" >
+				job_content,
+			</if>
+			<if test="jobImage != null" >
+				job_image,
+			</if>
+			<if test="comCode != null" >
+				com_code,
+			</if>
+			version,
+			Operate_Time_For_His,
+		</trim>
+		values <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null" >
+				#{id},
+			</if>
+			<if test="robotId != null" >
+				#{robotId},
+			</if>
+			<if test="startTime != null" >
+				#{startTime},
+			</if>
+			<if test="endTime != null" >
+				#{endTime},
+			</if>
+			<if test="walkCount != null" >
+				#{walkCount},
+			</if>
+			<if test="consumeEnergy != null" >
+				#{consumeEnergy},
+			</if>
+			<if test="jobContent != null" >
+				#{jobContent},
+			</if>
+			<if test="jobImage != null" >
+				#{jobImage},
+			</if>
+			<if test="comCode != null" >
+				#{comCode},
+			</if>
+			1,
+			now(),
+		</trim>
+	</insert>
+
+	<!-- 更新一条记录(为空的字段不操作) -->
+	<update id="updateSelectiveByPrimaryKey" useGeneratedKeys="true" keyProperty="id" parameterType="ins.platform.robot.po.DemoRobotJob">
+		update demo_robot_job
+		<set>
+			<if test="robotId != null" >
+				robot_id=#{robotId},
+			</if>
+			<if test="startTime != null" >
+				start_time=#{startTime},
+			</if>
+			<if test="endTime != null" >
+				end_time=#{endTime},
+			</if>
+			<if test="walkCount != null" >
+				walk_count=#{walkCount},
+			</if>
+			<if test="consumeEnergy != null" >
+				consume_energy=#{consumeEnergy},
+			</if>
+			<if test="jobContent != null" >
+				job_content=#{jobContent},
+			</if>
+			<if test="jobImage != null" >
+				job_image=#{jobImage},
+			</if>
+			<if test="comCode != null" >
+				com_code=#{comCode},
+			</if>
+			version=version+1,
+			Operate_Time_For_His=now(),
+		</set>
+		where Id = #{id}
+	</update>
+
+	<!-- 完整更新一条记录 -->
+	<update id="updateByPrimaryKey" useGeneratedKeys="true" keyProperty="id" parameterType="ins.platform.robot.po.DemoRobotJob">
+		update demo_robot_job
+		set robot_id=#{robotId},
+			start_time=#{startTime},
+			end_time=#{endTime},
+			walk_count=#{walkCount},
+			consume_energy=#{consumeEnergy},
+			job_content=#{jobContent},
+			job_image=#{jobImage},
+			com_code=#{comCode},
+			version=version+1,
+			Operate_Time_For_His=now()
+		where Id = #{id}
+	</update>
+
+</mapper>

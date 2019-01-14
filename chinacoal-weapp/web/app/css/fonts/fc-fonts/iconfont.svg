@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="fc" horiz-adv-x="1024" >
+  <font-face
+    font-family="fc"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="outdent" unicode="&#58881;" d="M408 454h480c4.4 0 8 3.6 8 8v56c0 4.4-3.6 8-8 8H408c-4.4 0-8-3.6-8-8v-56c0-4.4 3.6-8 8-8z m-8-204c0-4.4 3.6-8 8-8h480c4.4 0 8 3.6 8 8v56c0 4.4-3.6 8-8 8H408c-4.4 0-8-3.6-8-8v-56z m504 486H120c-4.4 0-8-3.6-8-8v-56c0-4.4 3.6-8 8-8h784c4.4 0 8 3.6 8 8v56c0 4.4-3.6 8-8 8z m0-632H120c-4.4 0-8-3.6-8-8v-56c0-4.4 3.6-8 8-8h784c4.4 0 8 3.6 8 8v56c0 4.4-3.6 8-8 8zM115.4 377.1L271.7 254c5.8-4.6 14.4-0.5 14.4 6.9V507.1c0 7.4-8.5 11.5-14.4 6.9L115.4 390.9c-4.5-3.5-4.5-10.3 0-13.8z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="indent" unicode="&#58882;" d="M408 454h480c4.4 0 8 3.6 8 8v56c0 4.4-3.6 8-8 8H408c-4.4 0-8-3.6-8-8v-56c0-4.4 3.6-8 8-8z m-8-204c0-4.4 3.6-8 8-8h480c4.4 0 8 3.6 8 8v56c0 4.4-3.6 8-8 8H408c-4.4 0-8-3.6-8-8v-56z m504 486H120c-4.4 0-8-3.6-8-8v-56c0-4.4 3.6-8 8-8h784c4.4 0 8 3.6 8 8v56c0 4.4-3.6 8-8 8z m0-632H120c-4.4 0-8-3.6-8-8v-56c0-4.4 3.6-8 8-8h784c4.4 0 8 3.6 8 8v56c0 4.4-3.6 8-8 8zM142.4 253.9L298.7 377c4.5 3.5 4.5 10.3 0 13.9L142.4 514.1c-5.8 4.6-14.4 0.5-14.4-6.9v-246.3c0-7.4 8.5-11.6 14.4-7z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="up" unicode="&#58884;" d="M65.583 160.791L512 607.21 958.417 160.79z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="down" unicode="&#58885;" d="M65.583 607.209L512 160.79 958.417 607.21z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="right" unicode="&#58886;" d="M288.791 830.417L735.21 384 288.79-62.417z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="left" unicode="&#58887;" d="M735.209 830.417L288.79 384 735.21-62.417z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

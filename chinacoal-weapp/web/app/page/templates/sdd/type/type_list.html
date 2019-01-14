@@ -1,0 +1,58 @@
+<script id="queryFormTmpl" type="text/x-jsrender">
+<!--查询结果-->
+  <div id="search-panel">
+    <!--查询条件-->
+    <div class="col-md-12 column clean-padding-left-right" >
+      <form role="form" class="searchform">
+        <div class="box box-info">
+          <div class="modal-header box-header">
+            <h4 class="box-title">查询条件</h4>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="row form-group">
+                  <div class="col-md-4">
+                    <label for="type" class="control-label">类型</label>
+                  </div>
+                  <div class="col-md-8">
+                   <input name="type" id="type" class="form-control" type="text" placeholder="">
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4">
+                <div class="row form-group">
+                  <div class="col-md-4">
+                    <label for="typeDesc" class="control-label">类型描述</label>
+                  </div>
+                  <div class="col-md-8">
+                   <input name="typeDesc" id="typeDesc" class="form-control" type="text" placeholder="">
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-search btn-sm">查询</button>
+             </div>
+             
+           </div>
+         </div>
+       </div>
+     </form>
+   </div>
+   <div class="col-md-12 column clean-padding-left-right" >
+    <div class="box box-info">
+      <div class="modal-header box-header box-header">
+        <h4 class="box-title">类型列表</h4>
+        <div id="toolbar" class="box-tools pull-right">
+          <button id="type_add" type="button" class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+          </button>
+        </div>
+        <div class="tab-content list-table">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</script>           

@@ -1,0 +1,59 @@
+<script id="queryFormTmpl" type="text/x-jsrender">
+<!--查询结果-->
+ <div id="search-panel">
+    <div class="col-md-12 column clean-padding-left-right" >
+      <form role="form" class="searchform">
+        <div class="box box-info">
+          <div class="modal-header box-header">
+            <h4 class="box-title">查询条件</h4>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="row form-group">
+                  <div class="col-md-4">
+                    <label for="taskCode" class="control-label">功能代码</label>
+                  </div>
+                  <div class="col-md-8">
+                   <input name="taskCode" id="taskCode" class="form-control" type="text" placeholder="">
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4">
+                <div class="row form-group">
+                  <div class="col-md-4">
+                    <label for="taskCName" class="control-label">功能名称</label>
+                  </div>
+                  <div class="col-md-8">
+                   <input name="taskCName" id="taskCName" class="form-control" type="text" placeholder="">
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-search btn-sm">查询</button>
+             </div>
+             
+           </div>
+         </div>
+       </div>
+     </form>
+   </div>
+
+
+   <div class="col-md-12 column clean-padding-left-right" >
+    <div class="box box-info">
+      <div class="modal-header box-header box-header">
+        <h4 class="box-title">功能列表</h4>
+        <div id="toolbar" class="box-tools pull-right">
+          <button id="task_add" type="button" class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+          </button>
+        </div>
+        <div class="tab-content list-table">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</script>           

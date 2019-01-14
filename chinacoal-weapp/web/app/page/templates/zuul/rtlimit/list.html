@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="./css/select2.a.css">
+</head>
+<script id="queryFormTmpl" type="text/x-jsrender">
+<div id="search-panel">
+    <!--查询条件-->
+    <div class="col-md-12 column clean-padding-left-right" >
+      <form role="form" class="searchform">
+        <div class="box box-info">
+          <div class="modal-header box-header">
+            <h4 class="box-title">查询条件</h4>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="row form-group">
+                  <div class="col-md-4">
+                    <label for="method" class="control-label">方案</label>
+                  </div>
+                  <div class="col-md-8">
+                   <input name="method" id="method" class="form-control" type="text" placeholder="">
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4">
+                <div class="row form-group">
+                  <div class="col-md-4">
+                    <label for="type" class="control-label">类型</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select id="type" name="type" class="form-control input-sm"  type="text" >
+                       <option value=" " disabled selected style="display: none;">类型</option>
+                       <option value="1" >限流</option>
+                       <option value="2" >配额</option>    
+                    </select>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-search btn-sm">查询</button>
+             </div>
+             
+           </div>
+         </div>
+       </div>
+     </form>
+   </div>
+   <div class="col-md-12 column clean-padding-left-right" >
+    <div class="box box-info">
+      <div class="modal-header box-header box-header">
+        <h4 class="box-title">用户列表</h4>
+        <div id="toolbar" class="box-tools pull-right">
+          <button id="rt_add" type="button" class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+          </button>
+        </div>
+        <div class="tab-content list-table">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</script>           

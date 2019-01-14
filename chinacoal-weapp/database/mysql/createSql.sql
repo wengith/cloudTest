@@ -1,0 +1,476 @@
+SET FOREIGN_KEY_CHECKS=0;
+-- -----------bpm------------------------------------------------
+CREATE TABLE `bpm_node` (
+  `node_code` varchar(60) NOT NULL COMMENT '英文名',
+  `node_name` varchar(60) NOT NULL COMMENT '中文名',
+  `url` varchar(200) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `valid_status` varchar(1) DEFAULT NULL COMMENT '效力状态',
+  `create_time` datetime NOT NULL,
+  `create_code` varchar(30) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_code` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`node_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '工作流节点表';
+CREATE TABLE `bpm_process_instance` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `business_no` varchar(60) NOT NULL,
+  `business_detail` varchar(200) DEFAULT NULL,
+  `heart_flag` varchar(10) DEFAULT NULL,
+  `status` varchar(10) NOT NULL COMMENT 'Created-创建，Closed-关闭，Suspended-挂起',
+  `valid_status` varchar(1) DEFAULT NULL COMMENT '效力状态',
+  `create_code` varchar(60) DEFAULT NULL,
+  `create_time` datetime NOT NULL,
+  `update_code` varchar(60) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '工作流实例表';
+CREATE TABLE `bpm_task` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `node_code` varchar(60) NOT NULL,
+  `process_intance_id` bigint(20) NOT NULL,
+  `status` varchar(10) DEFAULT NULL COMMENT 'Created-创建，Processing-处理中,Closed-关闭，Suspended-挂起/注销,Reassigned-移交，Entrusted-委托',
+  `created_on` datetime DEFAULT NULL COMMENT '创建时间',
+  `complete_on` datetime DEFAULT NULL COMMENT '完成时间',
+  `focus_on` varchar(2) DEFAULT NULL COMMENT '0未关注，1关注',
+  `parent_id` bigint(20) DEFAULT NULL COMMENT '父节点',
+  `creator` varchar(60) NOT NULL,
+  `actual_owner` varchar(60) DEFAULT NULL,
+  `create_code` varchar(60) DEFAULT NULL,
+  `create_time` datetime NOT NULL,
+  `update_code` varchar(60) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '工作流任务表';
+CREATE TABLE `bpm_task_potowners` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `task_id` bigint(20) unsigned NOT NULL,
+  `owner` varchar(60) NOT NULL COMMENT '拥有者，一般是用户代码',
+  PRIMARY KEY (`id`),
+  KEY `taskid_index` (`task_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '工作流任务用户关系表';
+
+CREATE TABLE `demo_robot_job` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `robot_id` bigint(20) NOT NULL COMMENT '机器人ID',
+  `start_time` datetime NOT NULL COMMENT '起始时间',
+  `end_time` datetime NOT NULL COMMENT '结束时间',
+  `walk_count` bigint DEFAULT NULL COMMENT '行走次数',
+  `consume_energy` decimal(10,4) DEFAULT NULL COMMENT '消耗能量',
+  `job_content` text NOT NULL COMMENT '作业内容',
+  `job_image` blob COMMENT '作业录像',
+  `com_code` varchar(8) NOT NULL COMMENT '归属机构',
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `fk_robot_id` (`robot_id`),
+  CONSTRAINT `demo_robot_job_ibfk_1` FOREIGN KEY (`robot_id`) REFERENCES `demo_robot_main` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '演示机器人作业表';
+CREATE TABLE `demo_robot_main` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `robot_sn` varchar(80) NOT NULL COMMENT '机器人编号',
+  `robot_height` decimal(6,2) NOT NULL COMMENT '机器人高度',
+  `nickname` varchar(80) DEFAULT NULL COMMENT '昵称',
+  `recharge_count` int NOT NULL COMMENT '充电循环',
+  `manufacture_name` varchar(255) NOT NULL COMMENT '生产厂家',
+  `manufacture_date` date NOT NULL COMMENT '生产日期',
+  `com_code` varchar(8) NOT NULL COMMENT '归属机构',
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '演示机器人主表';
+CREATE TABLE `msg_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(80) DEFAULT NULL,
+  `sender` varchar(40) DEFAULT NULL,
+  `receiver` varchar(1024) DEFAULT NULL,
+  `send_time` datetime NOT NULL,
+  `repeat_cycle` decimal(10,0) DEFAULT NULL,
+  `content` text,
+  `user_code` varchar(40) DEFAULT NULL,
+  `com_code` varchar(40) DEFAULT NULL COMMENT '归属机构',
+  `system_code` varchar(40) DEFAULT NULL,
+  `additional_code` varchar(80) DEFAULT NULL,
+  `msg_type` varchar(20) DEFAULT NULL COMMENT 'Message:消息 Alert：提醒 Error：错误',
+  `error_log` text,
+  `business_type` varchar(40) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '消息表';
+-- -------------------------saa--------------------------------------------
+CREATE TABLE `saa_factor` (
+  `factor_code` varchar(60) NOT NULL,
+  `factor_desc` varchar(60) DEFAULT NULL,
+  `data_type` varchar(60) NOT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`factor_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '权限因子表';
+CREATE TABLE `saa_factor_field` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `factor_code` varchar(60) NOT NULL,
+  `field_code` varchar(60) NOT NULL,
+  `entity_code` varchar(60) DEFAULT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `fk_saa_factor_code` (`factor_code`),
+  CONSTRAINT `saa_factor_field_ibfk_1` FOREIGN KEY (`factor_code`) REFERENCES `saa_factor` (`factor_code`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '权限因子字段表';
+CREATE TABLE `saa_role` (
+  `role_code` varchar(64) NOT NULL,
+  `role_c_name` varchar(60) DEFAULT NULL,
+  `role_t_name` varchar(60) DEFAULT NULL,
+  `role_e_name` varchar(60) DEFAULT NULL,
+  `comcode` varchar(8) NOT NULL,
+  `creator_code` varchar(10) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `updater_code` varchar(10) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `valid_ind` char(1) NOT NULL,
+  `remark` varchar(60) DEFAULT NULL,
+  `flag` char(2) DEFAULT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`role_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '权限角色表';
+
+CREATE TABLE `saa_role_task` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `role_code` varchar(60) NOT NULL,
+  `task_code` varchar(60) NOT NULL,
+  `updater_code` varchar(60) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `fk_saa_role_code` (`role_code`),
+  KEY `fk_saa_task_code` (`task_code`),
+  CONSTRAINT `saa_role_task_ibfk_1` FOREIGN KEY (`role_code`) REFERENCES `saa_role` (`role_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `saa_role_task_ibfk_2` FOREIGN KEY (`task_code`) REFERENCES `saa_task` (`task_code`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '权限角色功能表';
+CREATE TABLE `saa_task` (
+  `task_code` varchar(60) NOT NULL,
+  `group_name` varchar(120) DEFAULT NULL,
+  `upper_task_code` varchar(60) DEFAULT NULL,
+  `level` varchar(10) DEFAULT NULL,
+  `task_c_name` varchar(60) DEFAULT NULL,
+  `task_t_name` varchar(60) DEFAULT NULL,
+  `task_e_name` varchar(60) DEFAULT NULL,
+  `url` varchar(200) NOT NULL,
+  `creator_code` varchar(60) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `updater_code` varchar(60) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `validind` char(1) NOT NULL,
+  `remark` varchar(60) DEFAULT NULL,
+  `flag` char(2) DEFAULT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`task_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '权限功能表';
+CREATE TABLE `saa_user_power` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `user_code` varchar(60) NOT NULL,
+  `factor_code` varchar(60) NOT NULL,
+  `data_oper` varchar(60) NOT NULL,
+  `data_value` varchar(60) NOT NULL,
+  `system_code` varchar(60) NOT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `fk_saa_user_factor_code` (`factor_code`),
+  CONSTRAINT `saa_user_power_ibfk_1` FOREIGN KEY (`factor_code`) REFERENCES `saa_factor` (`factor_code`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '权限用户权限表';
+CREATE TABLE `saa_user_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `user_code` varchar(64) NOT NULL,
+  `role_code` varchar(64) NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `updater_code` varchar(64) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `fk_saa_user_role_code` (`role_code`),
+  CONSTRAINT `saa_user_role_ibfk_1` FOREIGN KEY (`role_code`) REFERENCES `saa_role` (`role_code`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '权限用户角色表';
+CREATE TABLE `sdd_code` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `type_id` bigint(18) DEFAULT NULL,
+  `code` varchar(250) DEFAULT NULL,
+  `value` varchar(250) DEFAULT NULL,
+  `language` varchar(45) DEFAULT NULL,
+  `code_desc` varchar(250) DEFAULT NULL,
+  `valid_status` varchar(1) DEFAULT NULL COMMENT '效力状态',
+  `flag` varchar(2) DEFAULT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `FK_sdd_type` (`type_id`),
+  CONSTRAINT `sdd_code_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `sdd_type` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '字段代码表';
+CREATE TABLE `sdd_type` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `type` varchar(250) DEFAULT NULL,
+  `type_desc` varchar(250) DEFAULT NULL,
+  `valid_status` varchar(1) DEFAULT NULL COMMENT '效力状态',
+  `flag` varchar(45) DEFAULT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '字段类型表';
+CREATE TABLE `smc_menu` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `upper_id` bigint(18) NOT NULL,
+  `menu_level` bigint(9) NOT NULL,
+  `system_code` varchar(255) DEFAULT NULL,
+  `menu_cname` varchar(255) DEFAULT NULL,
+  `menu_tname` varchar(255) DEFAULT NULL,
+  `menu_ename` varchar(255) DEFAULT NULL,
+  `action_url` varchar(255) DEFAULT NULL,
+  `target` varchar(255) DEFAULT NULL,
+  `display_no` bigint(9) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `image_expand` varchar(255) DEFAULT NULL,
+  `image_collapse` varchar(255) DEFAULT NULL,
+  `icon_expand` varchar(255) DEFAULT NULL,
+  `icon_collapse` varchar(255) DEFAULT NULL,
+  `task_code` varchar(255) DEFAULT NULL,
+  `creator_code` varchar(10) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `updater_code` varchar(10) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `valid_ind` varchar(1) NOT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `flag` varchar(255) DEFAULT NULL,
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  `style` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_utimenu_idcode` (`id`,`upper_id`,`system_code`,`display_no`,`valid_ind`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '系统菜单表';
+CREATE TABLE `smc_menu_shortcut` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `user_code` varchar(30) DEFAULT NULL,
+  `menu_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_user_code` (`user_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '系统快捷菜单表';
+CREATE TABLE `sys_application` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `system_code` varchar(255) NOT NULL,
+  `cname` varchar(255) DEFAULT NULL,
+  `ename` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `deleted_flag` binary(1) DEFAULT NULL,
+  `home_Url` varchar(255) DEFAULT NULL,
+  `tech_architecture` varchar(255) DEFAULT NULL,
+  `developent_team` varchar(255) DEFAULT NULL,
+  `online_time` datetime DEFAULT NULL,
+  `owner` varchar(255) DEFAULT NULL,
+  `backup_owner` varchar(255) DEFAULT NULL,
+  `database_name` varchar(255) DEFAULT NULL,
+  `database_type` varchar(255) DEFAULT NULL,
+  `dbserver_path` varchar(255) DEFAULT NULL,
+  `svn_path` varchar(255) DEFAULT NULL,
+  `created_user` varchar(255) DEFAULT NULL,
+  `created_date` datetime DEFAULT NULL,
+  `updated_user` varchar(255) DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `validate_type` varchar(255) DEFAULT NULL,
+  `login_options` varchar(1000) DEFAULT NULL,
+  `add_role` binary(1) DEFAULT NULL,
+  `role_auth` binary(1) DEFAULT NULL,
+  `res_auth` binary(1) DEFAULT NULL,
+  `store_dept_auth` binary(1) DEFAULT NULL,
+  `group_auth` binary(1) DEFAULT NULL,
+  `store_owner` binary(1) DEFAULT NULL,
+  `app_lock` binary(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `sys_application_ix1` (`system_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '系统应用表';
+CREATE TABLE `sys_area_dict` (
+  `area_code` varchar(20) NOT NULL,
+  `area_name` varchar(3000) DEFAULT NULL,
+  `short_code` varchar(20) DEFAULT NULL,
+  `full_name` varchar(3000) DEFAULT NULL,
+  `area_level` decimal(3,1) DEFAULT NULL,
+  `serial_no` decimal(4,0) DEFAULT NULL,
+  `upper_code` varchar(20) DEFAULT NULL,
+  `post_code` varchar(20) DEFAULT NULL,
+  `is_valid` varchar(1) DEFAULT NULL,
+  `remark` varchar(1000) DEFAULT NULL,
+  `often_flag` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`area_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '系统区域字典表';
+CREATE TABLE `sys_cas_login` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `created_date` datetime DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `ticket` varchar(255) DEFAULT NULL,
+  `sticket` varchar(255) DEFAULT NULL,
+  `action` varchar(255) DEFAULT NULL,
+  `client_ip` varchar(255) DEFAULT NULL,
+  `server_ip` varchar(255) DEFAULT NULL,
+  `login_time` datetime DEFAULT NULL,
+  `logout_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '系统单点登录信息表';
+
+CREATE TABLE `sys_code_dict` (
+  `code_type` varchar(30) NOT NULL,
+  `code_code` varchar(20) NOT NULL,
+  `code_name` varchar(255) DEFAULT NULL,
+  `full_name` varchar(255) DEFAULT NULL,
+  `engname` varchar(255) DEFAULT NULL,
+  `serial_no` bigint(4) DEFAULT NULL,
+  `upper_code` varchar(20) DEFAULT NULL,
+  `is_valid` varchar(1) DEFAULT NULL,
+  `is_root` varchar(1) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `property1` varchar(20) DEFAULT NULL,
+  `property2` varchar(20) DEFAULT NULL,
+  `property3` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`code_type`,`code_code`),
+  KEY `idx_sys_code_dict_uppercode` (`upper_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '系统代码字典表';
+CREATE TABLE `sys_trans_config` (
+  `trans_type` varchar(30) NOT NULL,
+  `trans_name` varchar(50) DEFAULT NULL,
+  `select_table` varchar(30) DEFAULT NULL,
+  `select_code` varchar(30) DEFAULT NULL,
+  `select_name` varchar(50) DEFAULT NULL,
+  `select_where` varchar(100) DEFAULT NULL,
+  `pararm_value` varchar(255) DEFAULT NULL,
+  `order_by` varchar(30) DEFAULT NULL,
+  `remark` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`trans_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '系统翻译字典表';
+CREATE TABLE `sys_user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `user_code` varchar(60) NOT NULL COMMENT '用户代码',
+  `user_name` varchar(60) DEFAULT NULL COMMENT '用户名称',
+  `user_type` int(11) DEFAULT '1' COMMENT '用户类型。1是系统用户2为C端用户，例如接口、手机、微信',
+  `email` varchar(60) DEFAULT NULL COMMENT '电子邮件',
+  `mobile_phone` varchar(20) DEFAULT NULL COMMENT '移动电话',
+  `password` varchar(32) NOT NULL COMMENT '密码',
+  `salt` varchar(10) NOT NULL  DEFAULT '0' COMMENT '加密盐',
+  `second_validate` varchar(1) DEFAULT NULL COMMENT '二次验证',
+  `ga_code` varchar(60) DEFAULT NULL COMMENT 'GA代码',
+  `question` varchar(255) DEFAULT NULL COMMENT '安全问题',
+  `answer` varchar(255) DEFAULT NULL COMMENT '安全答案',
+  `sex` varchar(1) DEFAULT NULL COMMENT '性别',
+  `birthday` datetime DEFAULT NULL COMMENT '生日',
+  `reg_time` datetime DEFAULT NULL COMMENT '注册时间',
+  `last_login_failed` bigint(10) DEFAULT NULL COMMENT '最后登录失败次数',
+  `last_time` datetime DEFAULT NULL COMMENT '最后登录成功时间',
+  `last_ip` varchar(15) DEFAULT NULL COMMENT '最后登录成功IP',
+  `msn` varchar(60) DEFAULT NULL COMMENT 'MSN',
+  `qq` varchar(20) DEFAULT NULL COMMENT 'QQ',
+  `office_phone` varchar(20) DEFAULT NULL COMMENT '办公室电话',
+  `home_phone` varchar(20) DEFAULT NULL COMMENT '家庭电话',
+  `checked` varchar(1) NOT NULL DEFAULT '0' COMMENT '是否已验证',
+  `age` varchar(60) DEFAULT NULL COMMENT '年龄',
+  `operators` varchar(60) DEFAULT NULL COMMENT '操作员',
+  `password_set_date` datetime DEFAULT NULL COMMENT '密码设置日期',
+  `password_expire_date` datetime DEFAULT NULL COMMENT '密码失效日期',
+  `address` varchar(60) DEFAULT NULL COMMENT '地址',
+  `postcode` varchar(6) DEFAULT NULL COMMENT '邮编',
+  `valid_status` varchar(1) DEFAULT NULL COMMENT '效力状态',
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_code` (`user_code`),
+  KEY `email` (`email`),
+  KEY `mobile_phone` (`mobile_phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4  COMMENT '系统用户表';
+CREATE TABLE `sys_user_property` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `user_code` varchar(60) NOT NULL COMMENT '用户代码',
+  `code` varchar(22) NOT NULL COMMENT '代码',
+  `value` varchar(8) NOT NULL COMMENT '值',
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '系统用户属性表';
+CREATE TABLE `sys_user_run_as` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `from_user_code` varchar(60) NOT NULL COMMENT '原用户代码',
+  `to_user_code` varchar(60) NOT NULL COMMENT 'RunAs用户代码',
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '系统用户RunAS表';
+CREATE TABLE `utioperatehistory` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `OperateType` decimal(6,0) NOT NULL,
+  `OperateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Entity` varchar(255) NOT NULL,
+  `EntityKey1` varchar(255) DEFAULT NULL,
+  `EntityKey2` varchar(255) DEFAULT NULL,
+  `EntityKey3` varchar(255) DEFAULT NULL,
+  `EntityKey4` varchar(255) DEFAULT NULL,
+  `EntityKey5` varchar(255) DEFAULT NULL,
+  `EntityKey6` varchar(255) DEFAULT NULL,
+  `EntityKey7` varchar(255) DEFAULT NULL,
+  `EntityKey8` varchar(255) DEFAULT NULL,
+  `Flag` char(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '操作日志表';
+CREATE TABLE `uti_quartz_config` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `job_code` varchar(80) NOT NULL COMMENT '任务代码',
+  `job_description` varchar(255) DEFAULT NULL COMMENT '任务描述',
+  `user_code` varchar(64) DEFAULT NULL COMMENT '用户代码',
+  `second` varchar(80) DEFAULT NULL COMMENT '秒钟属性',
+  `minute` varchar(80) DEFAULT NULL COMMENT '分钟属性',
+  `hour` varchar(80) DEFAULT NULL COMMENT '小时属性',
+  `day` varchar(80) DEFAULT NULL COMMENT '日期属性',
+  `month` varchar(80) DEFAULT NULL COMMENT '月份属性',
+  `week` varchar(80) DEFAULT NULL COMMENT '星期属性',
+  `year` varchar(80) DEFAULT NULL COMMENT '年份属性',
+  `cron_expression` varchar(255) NOT NULL COMMENT '定时表达式',
+  `target_object` varchar(255) NOT NULL COMMENT '目标对象',
+  `target_method` varchar(255) NOT NULL COMMENT '目标方法',
+  `con_current` varchar(1) NOT NULL COMMENT '并发定时',
+  `valid_status` varchar(1) DEFAULT NULL COMMENT '效力状态',
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  KEY `ak_key_jobcode` (`job_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '定时任务表';
+ 
+CREATE TABLE `sms_template`  (
+  `template_code` varchar(36) NOT NULL COMMENT '模板ID',
+  `theme` varchar(36) NOT NULL COMMENT '主题',
+  `sys_code` varchar(36) NOT NULL COMMENT '系统代码',
+  `com_code` varchar(36) NOT NULL COMMENT '分公司代码',
+  `template_content` varchar(255) NOT NULL COMMENT '模板内容',
+  `version` int NOT NULL COMMENT '版本号（内部使用）',
+  `insert_time_for_his` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '插入时间',
+  `operate_time_for_his` datetime DEFAULT NULL COMMENT '更新时间',
+  `valid_status` varchar(1) DEFAULT NULL COMMENT '效力状态',
+  PRIMARY KEY (`template_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '短信模板表';

@@ -1,0 +1,1 @@
+这是一个WebService示例，参考http://localhost:19040/ws/countries.wsdl和http://localhost:19040/ws/countries2.wsdl

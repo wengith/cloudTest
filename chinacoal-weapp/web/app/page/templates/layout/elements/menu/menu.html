@@ -1,0 +1,26 @@
+<script id="navMenusTml" type="text/x-jsrender">
+  <ul class="menu-items">
+    {^{for navMenus}}
+    <li class="treeview" data-index="menu-{{: #index}}" style="transform: translate3d(0px, 0px, 0px);">
+      <span class="item-icon">
+        <i class="fa {{:img}}"></i>
+      </span>
+      <a href="#" data-index="menu-{{: #index}}"><span>{{:name}}</span>
+      </a>
+      <ul class="treeview-menu" id="menu-{{: #index}}">
+        <div class="menu-title" data-index="{{: #index}}"><p>{{:name}}</p></div>
+        {^{for childMenus}}
+        <li class="level2-menu">
+          <div class="level2-title" data-index="{{: #index}}"><p><i class="fc fc-down"></i>&nbsp;&nbsp;{{:name}}</p></div>
+          <ul class="level2-content item-{{: #index}}">
+            {^{for childMenu}}
+            <li><div class="item"><a href="javascript:;" class="thirdTab" router="{{:url}}" title="{{:name}}"><i class="fa {{:img}} icon"></i><div class="title">{{:name}}</div></a></div></li>
+            {{/for}}
+          </ul>
+        </li>
+        {{/for}}
+      </ul>
+    </li>
+    {{/for}}
+  </ul>
+</script>

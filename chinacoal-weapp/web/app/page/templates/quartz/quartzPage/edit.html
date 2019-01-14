@@ -1,0 +1,406 @@
+<div class="row" id="quartz-edit"></div>
+<script id="quartzFormTmpl" type="text/x-jsrender">
+    <div class="row lookup recorded">
+        <form id="form" class="form-horizontal" role="form" method="post">
+            <div class="col-lg-12">
+                <!-- style="position:absolute;" -->
+                <div class="box panel box-info">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">
+                          <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" class="">
+                            定时任务信息
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-collapse collapse in" id="collapseOne">
+                    <div class="box-body">
+                        <div id="div_error"></div>
+                        <!--隐藏行-->
+                        <div class="row" style="display: none">
+                            <div class="col-lg-6 col-md-6 col-xs-12">
+                                <div class="row form-group">
+                                    <div class="col-xs-4">
+                                        <label for="id" class="control-label"> <font
+                                            color="#FF0000" size="+1" style="vertical-align: middle">*</font>ID</label>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <input id="id" name="id" class="form-control" data-link="quartz.id" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                         <!--第零行-->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-xs-12">
+                                <div class="row form-group">
+                                    <div class="col-xs-4">
+                                        <label for="userCode" class="control-label"> <font
+                                            color="#FF0000" size="+1" style="vertical-align: middle">*</font>用户代码</label>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <input id="userCode" name="userCode" class="form-control" data-link="quartz.userCode" readonly="true" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                        <!--第一行-->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-xs-12">
+                                <div class="row form-group">
+                                    <div class="col-xs-4">
+                                        <label for="jobCode" class="control-label"> <font
+                                            color="#FF0000" size="+1" style="vertical-align: middle">*</font>作业代码</label>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <input id="jobCode" name="jobCode" class="form-control" data-link="quartz.jobCode" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-xs-12">
+                                    <div class="row form-group">
+                                        <div class="col-xs-4">
+                                            <label for="jobDescription" class="control-label "><font
+                                                color="#FF0000" size="+1" style="vertical-align: middle">*</font>
+                                                作业描述</label>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input id="jobDescription" name="jobDescription" class="form-control" data-link="quartz.jobDescription" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--第三行-->
+                                <div class="row">
+                                  <div class="col-lg-6 col-md-6 col-xs-12">
+                                      <div class="row form-group">
+                                          <div class="col-xs-4">
+                                              <label for="targetObject" class="control-label"> <font
+                                                  color="#FF0000" size="+1" style="vertical-align: middle">*</font>目标对象</label>
+                                              </div>
+                                              <div class="col-xs-6">
+                                                  <input id="targetObject" name="targetObject" class="form-control" data-link="quartz.targetObject" type="text"/>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-lg-6 col-md-6 col-xs-12">
+                                          <div class="row form-group">
+                                              <div class="col-xs-4">
+                                                  <label for="targetMethod" class="control-label "><font
+                                                      color="#FF0000" size="+1" style="vertical-align: middle">*</font>
+                                                      目标方法</label>
+                                                  </div>
+                                                  <div class="col-xs-6">
+                                                      <input id="targetMethod" name="targetMethod" class="form-control" data-link="quartz.targetMethod" type="text" />
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                <!--第四行-->
+                                <div class="row">
+                                  <div class="col-lg-6 col-md-6 col-xs-12">
+                                      <div class="row form-group">
+                                        <div class="col-xs-4">
+                                          <label for="conCurrent" class="control-label "><font
+                                            color="#FF0000" size="+1" style="vertical-align: middle">*</font>
+                                            并发</label>
+                                          </div>
+                                          <div class="col-xs-6"> 
+                                           <input type="hidden" />
+                                          <select data-link="quartz.conCurrent" id="conCurrent" name="conCurrent" 
+                                          class="form-control select2">
+                                            <option value="1" >允许</option>
+                                            <option value="0" >不允许</option>    
+                                          </select>               
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-xs-12">
+                                      <div class="row form-group">
+                                        <div class="col-xs-4">
+                                          <label for="validStatus" class="control-label "><font
+                                            color="#FF0000" size="+1" style="vertical-align: middle">*</font>
+                                            效力状态</label>
+                                          </div>
+                                          <div class="col-xs-6"> 
+                                           <input type="hidden" />
+                                          <select data-link="quartz.validStatus" id="validStatus" name="validStatus" 
+                                          class="form-control select2">
+                                            <option value="1" >有效</option>
+                                            <option value="0" >失效</option>    
+                                          </select>               
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                    <div class="box panel box-info">
+                    <div class="box-header with-border">
+                        <h5 class="box-title">
+                          <a href="#collapsetwo" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" class="">
+                            输入详细的定时配置（日和星期只能有且必须有一个字段有特定值，另一个字段必须没有特定是或为“?”）
+                        </a>
+                    </h5>
+                </div>
+                <div class="panel-collapse collapse in" id="collapsetwo">
+                                <!--第五行-->
+                                <div class="row">
+                                  <div class="col-lg-4 col-md-4 col-xs-12">
+                                    <div class="row form-group">
+                                        <div class="col-xs-4">
+                                            <label class="control-label">时间域名</label>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    允许值</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    允许的特殊字符</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                <!--第六行-->
+                                <div class="row">
+                                  <div class="col-lg-4 col-md-4 col-xs-12">
+                                    <div class="row form-group">
+                                        <div class="col-xs-4">
+                                            <label for="second" class="control-label">秒</label>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input id="second" name="second" class="form-control" data-link="quartz.second" type="text"/>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    0-59</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    , - * /</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                <!--第七行-->
+                                <div class="row">
+                                  <div class="col-lg-4 col-md-4 col-xs-12">
+                                    <div class="row form-group">
+                                        <div class="col-xs-4">
+                                            <label for="minute" class="control-label">分</label>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input id="minute" name="minute" class="form-control" data-link="quartz.minute" type="text"/>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    0-59</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    , - * /</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                <!--第八行-->
+                                <div class="row">
+                                  <div class="col-lg-4 col-md-4 col-xs-12">
+                                    <div class="row form-group">
+                                        <div class="col-xs-4">
+                                            <label for="hour" class="control-label">时</label>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input id="hour" name="hour" class="form-control" data-link="quartz.hour" type="text"/>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    0-23</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    , - * /</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                <!--第九行-->
+                                <div class="row">
+                                  <div class="col-lg-4 col-md-4 col-xs-12">
+                                    <div class="row form-group">
+                                        <div class="col-xs-4">
+                                            <label for="day" class="control-label">日</label>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input id="day" name="day" class="form-control" data-link="quartz.day" type="text"/>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    1-31</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    , - * / ? L W C</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                <!--第十行-->
+                                <div class="row">
+                                  <div class="col-lg-4 col-md-4 col-xs-12">
+                                    <div class="row form-group">
+                                        <div class="col-xs-4">
+                                            <label for="month" class="control-label">月</label>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input id="month" name="month" class="form-control" data-link="quartz.month" type="text"/>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    1-12</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    , - * /</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                <!--第十一行-->
+                                <div class="row">
+                                  <div class="col-lg-4 col-md-4 col-xs-12">
+                                    <div class="row form-group">
+                                        <div class="col-xs-4">
+                                            <label for="week" class="control-label">周</label>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input id="week" name="week" class="form-control" data-link="quartz.week" type="text"/>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    1-7</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    , - * / ? L C #</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                <!--第十二行-->
+                                <div class="row">
+                                  <div class="col-lg-4 col-md-4 col-xs-12">
+                                    <div class="row form-group">
+                                        <div class="col-xs-4">
+                                            <label for="year" class="control-label">年</label>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <input id="year" name="year" class="form-control" data-link="quartz.year" type="text"/>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    空值 1970-2099</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-xs-12">
+                                        <div class="row form-group">
+                                            <div class="col-xs-4">
+                                                <label class="control-label ">
+                                                    , - * /</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                         </div>
+                       </div>
+                      <div class="box panel box-info">
+                      <div class="box-header with-border">
+                          <h5 class="box-title">
+                            <a href="#collapsethree" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" class="">
+                              特殊字符详细含义
+                            </a>
+                          </h5>
+                      </div>
+                        <div class="panel-collapse collapse in" id="collapsethree">
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;1、* 表示所有值. 例如:在分的字段上设置 "*",表示每一分钟都会触发。</p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;2、? 表示不指定值。使用的场景为不需要关心当前设置这个字段的值。例如:要在每月的10号触发一个操作，但不关心是周几，所以需要周位置的那个字段设置 为"?" 具体设置为 0 0 0 10 * ?</p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;3、- 表示区间。例如 在小时上设置 "10-12",表示 10,11,12点都会触发。</p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;4、, 表示指定多个值，例如在周字段上设置 "1,3,5" 表示周一，周三和周五触发</p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;5、/ 用于递增触发。如在秒上面设置"5/15" 表示从5秒开始，每增15秒触发(5,20,35,50)。在月字段上设置'1/3'所示每月1号开始，每隔三天触发一次。</p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;6、L 表示最后的意思。在日字段设置上，表示当月的最后一天(依据当前月份，如果是二月还会依据是否是润年[leap]), 在周字段上表示星期六，相当于"7"或"SAT"。如果在"L"前加上数字，则表示该数据的最后一个。例如在周字段上设置"6L"这样的格式,则表示“本 月最后一个星期五"</p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;7、W 表示离指定日期的最近那个工作日(周一至周五).例如在日字段上设置"15W"，表示离每月15号最近的那个工作日触发。如果15号正好是周六，则找最近的周五(14号)触发, 如果15号是周未，则找最近的下周一(16号)触发.如果15号正好在工作日(周一至周五)，则就在该天触发。如果指定格式为 "1W",它则表示每月1号往后最近的工作日触发。如果1号正是周六，则将在3号下周一触发。(注，"W"前只能设置具体的数字,不允许区间"-"). </p> 
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;8、# 序号(表示每月的第几个周几)，例如在周字段上设置"6#3"表示在每月的第三个周六.注意如果指定"#5",正好第五周没有周六，则不会触发该配置(用 在母亲节和父亲节再合适不过了)</p>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box box-tool-my">
+                        <div class="footer-my">
+                            <button type="submit" class="btn btn-danger btn-sm" style="display: none" id="btn-submit">保存</button>
+                            <button type="button" id="btn-close" class="btn btn-default btn-close btn-sm">关 闭</button>
+                        </div>
+                    </div>
+                </div>
+    </form>
+</div>
+</script>

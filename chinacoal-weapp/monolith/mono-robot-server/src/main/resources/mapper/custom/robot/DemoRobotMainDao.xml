@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- ============================================================== -->
+<!-- ================可直接使用Base配置文件中定义的节点！================ -->
+<!-- ============================================================== -->
+<mapper namespace="ins.platform.robot.dao.DemoRobotMainDao">
+  <!-- 请在下方添加自定义配置-->
+
+	<select id="selectByManufactureName" resultMap="BaseResultMap" parameterType="map">
+		<bind name="param1p" value="_parameter + '%'" />
+		select
+			<include refid="Base_Column_List"/>
+		from demo_robot_main
+		where manufacture_name like #{param1p}
+	</select>
+</mapper>

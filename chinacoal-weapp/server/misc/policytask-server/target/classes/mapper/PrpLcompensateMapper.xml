@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.claim.car.dao.PrpLcompensateMapper">
+
+  <select id="findByClaimNo" parameterType="java.lang.String" resultType="com.chinacoal.ins.claim.car.pojo.PrpLcompensate">
+    select a.*
+    from prplcompensate a
+    <where>
+      a.compensateflag in ('0','1')
+      <if test="_parameter!=null">
+        and a.claimno = #{claimNo}
+      </if>
+    </where>
+    order by a.inputtime asc
+  </select>
+
+  <select id="findByCompensateNo" parameterType="java.lang.String" resultType="com.chinacoal.ins.claim.car.pojo.PrpLcompensate">
+    select a.*
+    from prplcompensate a
+    <where>
+      <if test="_parameter!=null">
+        a.compensateno = #{compensateNo}
+      </if>
+    </where>
+  </select>
+</mapper>

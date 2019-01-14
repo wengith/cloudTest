@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ins-platform-parent</artifactId>
+        <groupId>ins-platform</groupId>
+        <version>6.2.0</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mono-robot-server</artifactId>
+    <name>mono-robot-server</name>
+
+
+    <dependencies>
+        <!-- 打成war包部署配置2开始 -->
+        <!-- <dependency> -->
+        <!-- <groupId>org.springframework.boot</groupId> -->
+        <!-- <artifactId>spring-boot-starter-tomcat</artifactId> -->
+        <!-- <scope>provided</scope> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!-- <artifactId>tomcat-embed-el</artifactId> -->
+        <!-- <groupId>org.apache.tomcat.embed</groupId> -->
+        <!-- <scope>provided</scope> -->
+        <!-- </dependency> -->
+        <!-- 打成war包部署配置2结束 -->
+
+        <!-- Web类型 -->
+        <dependency>
+            <groupId>ins.framework</groupId>
+            <artifactId>ins-framework-web</artifactId>
+            <version>${ins-framework.version}</version>
+        </dependency>
+        <!-- +DB类型 -->
+        <dependency>
+            <groupId>ins.framework</groupId>
+            <artifactId>ins-framework-mybatis</artifactId>
+            <version>${ins-framework.version}</version>
+        </dependency>
+        <!-- 代码生成工具 -->
+        <dependency>
+            <groupId>ins.framework</groupId>
+            <artifactId>ins-framework-mybatis-generator</artifactId>
+            <version>${ins-framework.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- 数据库驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- 测试相关工具包 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- 好用的预编译工具lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- 热启动 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

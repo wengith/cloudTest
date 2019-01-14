@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.claim.car.dao.QuickPayCaseMapper">
+
+  <select id="findInjuredTasks" parameterType="java.lang.String" resultType="string">
+    select t.prplchecktaskid as prplchecktaskid
+    from prplcheckcarperson t
+    <where>
+      <if test="_parameter!=null">
+        and t.registno = #{registNo,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="findChecker" parameterType="java.lang.String" resultType="string">
+    select t.checker1 as checker1
+    from prplchecktask t
+    <where>
+      <if test="_parameter!=null">
+        and t.registno = #{registNo,jdbcType=VARCHAR}
+      </if>
+    </where>
+    order by t.id desc
+  </select>
+
+  <select id="querySumPaid" parameterType="java.lang.String" resultType="com.chinacoal.ins.claim.car.pojo.QuickPayInfoDto">
+    select a.registno as registNo,
+      sum(case
+      when a.sumverilossfee is not null then
+      a.sumverilossfee
+      when a.sumpriceremnant is not null then
+      a.sumpriceremnant
+      else
+      a.sumlossfee
+      end) as sumDefCarLoss,
+      (select sum(a1.sumdefloss)
+      from prplpropmain a1
+      where a1.registno = a.registno) as sumDefPropLoss,
+      (select sum(a2.sumdefloss)
+      from prplperson a2
+      where a2.registno = a.registno) as sumDefPerLoss
+    from prpldeflossmain a
+    <where>
+      <if test="_parameter!=null">
+        a.registno = #{registNo}
+      </if>
+    </where>
+    group by a.registno
+  </select>
+</mapper>

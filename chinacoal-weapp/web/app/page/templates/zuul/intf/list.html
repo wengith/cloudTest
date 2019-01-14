@@ -1,0 +1,58 @@
+
+<script id="queryFormTmpl" type="text/x-jsrender">
+<div id="search-panel">
+    <!--查询条件-->
+    <div class="col-md-12 column clean-padding-left-right" >
+      <form role="form" class="searchform">
+        <div class="box box-info">
+          <div class="modal-header box-header">
+            <h4 class="box-title">查询条件</h4>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="row form-group">
+                  <div class="col-md-4">
+                    <label for="apiName" class="control-label">接口名称</label>
+                  </div>
+                  <div class="col-md-8">
+                   <input name="apiName" id="apiName" class="form-control" type="text" placeholder="">
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-4">
+                <div class="row form-group">
+                  <div class="col-md-4">
+                    <label for="path" class="control-label">接口路径</label>
+                  </div>
+                  <div class="col-md-8">
+                   <input name="path" id="path" class="form-control" type="text" placeholder="">
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-search btn-sm">查询</button>
+             </div>
+             
+           </div>
+         </div>
+       </div>
+     </form>
+   </div>
+   <div class="col-md-12 column clean-padding-left-right" >
+    <div class="box box-info">
+      <div class="modal-header box-header box-header">
+        <h4 class="box-title">接口列表</h4>
+        <div id="toolbar" class="box-tools pull-right">
+          <button id="intf_add" type="button" class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+          </button>
+        </div>
+        <div class="tab-content list-table">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</script>           
