@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.proposal.car.dao.GuPolicyItemMainMapper">
+  <resultMap id="BaseResultMap" type="com.chinacoal.ins.proposal.car.pojo.GuPolicyItemMain">
+    <id column="POLICYNO" jdbcType="VARCHAR" property="policyNo" />
+    <id column="ITEMNO" jdbcType="DECIMAL" property="itemNo" />
+    <id column="PLANCODE" jdbcType="VARCHAR" property="planCode" />
+    <id column="RISKCODE" jdbcType="VARCHAR" property="riskCode" />
+    <result column="ITEMCODE" jdbcType="VARCHAR" property="itemCode" />
+    <result column="ITEMNAME" jdbcType="VARCHAR" property="itemName" />
+    <result column="DANGERUNITTYPE" jdbcType="VARCHAR" property="dangerUnitType" />
+    <result column="DANGERUNITCODE" jdbcType="VARCHAR" property="dangerUnitCode" />
+    <result column="RISKKIND" jdbcType="VARCHAR" property="riskKind" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="SUBPOLICYNO" jdbcType="VARCHAR" property="subPolicyNo" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
+    <result column="RISKLEVEL" jdbcType="VARCHAR" property="riskLevel" />
+    <result column="RETENTVALUE" jdbcType="DECIMAL" property="reTentValue" />
+    <result column="DAMAGEDTIMES" jdbcType="DECIMAL" property="damagedTimes" />
+    <result column="RISKLEVELDESC" jdbcType="VARCHAR" property="riskLevelDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    POLICYNO, ITEMNO, PLANCODE, RISKCODE, ITEMCODE, ITEMNAME, DANGERUNITTYPE, DANGERUNITCODE, 
+    RISKKIND, REMARK, FLAG, SUBPOLICYNO, CURRENCY, RISKLEVEL, RETENTVALUE, DAMAGEDTIMES, 
+    RISKLEVELDESC
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.chinacoal.ins.proposal.car.pojo.GuPolicyItemMainKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from GUPOLICYITEMMAIN
+    where POLICYNO = #{policyno,jdbcType=VARCHAR}
+      and ITEMNO = #{itemno,jdbcType=DECIMAL}
+      and PLANCODE = #{plancode,jdbcType=VARCHAR}
+      and RISKCODE = #{riskcode,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

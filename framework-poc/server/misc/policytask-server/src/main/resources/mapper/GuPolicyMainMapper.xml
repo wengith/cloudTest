@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinacoal.ins.proposal.car.dao.GuPolicyMainMapper">
+  <resultMap id="BaseResultMap" type="com.chinacoal.ins.proposal.car.pojo.GuPolicyMain">
+    <id column="POLICYNO" jdbcType="VARCHAR" property="policyNo" />
+    <result column="PROPOSALNO" jdbcType="VARCHAR" property="proposalNo" />
+    <result column="PRINTNO" jdbcType="VARCHAR" property="printNo" />
+    <result column="BUSINESSCHANNEL" jdbcType="VARCHAR" property="businessChannel" />
+    <result column="BUSINESSSOURCE" jdbcType="VARCHAR" property="businessSource" />
+    <result column="BUSINESSTYPE" jdbcType="VARCHAR" property="businessType" />
+    <result column="POLICYSORT" jdbcType="VARCHAR" property="policySort" />
+    <result column="LANGUAGE" jdbcType="VARCHAR" property="language" />
+    <result column="GROUPIND" jdbcType="VARCHAR" property="groupInd" />
+    <result column="INTERMEDIARYCODE" jdbcType="VARCHAR" property="intermediaryCode " />
+    <result column="AGREEMENTNO" jdbcType="VARCHAR" property="agreementNo" />
+    <result column="SOLUTIONCODE" jdbcType="VARCHAR" property="solutionCode" />
+    <result column="CREDITPERIOD" jdbcType="DECIMAL" property="creditPeriod" />
+    <result column="INDICATIONNO" jdbcType="VARCHAR" property="indicationNo" />
+    <result column="INDICATIONSEQNO" jdbcType="DECIMAL" property="indicationSeqNo" />
+    <result column="QUOTATIONNO" jdbcType="VARCHAR" property="quotationNo" />
+    <result column="QUOTATIONSEQNO" jdbcType="DECIMAL" property="quotationSeqNo" />
+    <result column="HOLDCOVERNO" jdbcType="VARCHAR" property="holdCoverNo" />
+    <result column="HOLDCOVERSEQNO" jdbcType="DECIMAL" property="holdCoverSeqNo" />
+    <result column="COVERNOTENO" jdbcType="VARCHAR" property="coverNoteNo" />
+    <result column="COVERNOTESEQNO" jdbcType="DECIMAL" property="coverNoteSeqnNo" />
+    <result column="AGENTREFERENCENO" jdbcType="VARCHAR" property="agentReferenceNo" />
+    <result column="RENEWALNO" jdbcType="VARCHAR" property="reNewAlNo" />
+    <result column="REPLACEDPOLICYNO" jdbcType="VARCHAR" property="replacedPolicyNo" />
+    <result column="PROMOTIONCODE" jdbcType="VARCHAR" property="promotionCode" />
+    <result column="APPLICODE" jdbcType="VARCHAR" property="appliCode" />
+    <result column="APPLINAME" jdbcType="VARCHAR" property="appliName" />
+    <result column="APPLIADDRESS" jdbcType="VARCHAR" property="appliAddress" />
+    <result column="APPLIADDRTYPE" jdbcType="VARCHAR" property="appliAddrType" />
+    <result column="INSUREDCODE" jdbcType="VARCHAR" property="insuredCode" />
+    <result column="INSUREDNAME" jdbcType="VARCHAR" property="insuredName" />
+    <result column="INSUREDADDRESS" jdbcType="VARCHAR" property="insuredAddress" />
+    <result column="INSUREDADDRTYPE" jdbcType="VARCHAR" property="insuredAddrType" />
+    <result column="OPERATEDATE" jdbcType="TIMESTAMP" property="operateDate" />
+    <result column="RECEIVEDDATE" jdbcType="TIMESTAMP" property="receivedDate" />
+    <result column="ISSUEDATE" jdbcType="TIMESTAMP" property="issueDate" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
+    <result column="SUMINSURED" jdbcType="DECIMAL" property="sumInsured" />
+    <result column="SUMGROSSPREMIUM" jdbcType="DECIMAL" property="sumGrossPremium" />
+    <result column="SUMNETPREMIUM" jdbcType="DECIMAL" property="sumNetPremium" />
+    <result column="ARGUESOLUTION" jdbcType="VARCHAR" property="argueSolution" />
+    <result column="MAINPORT" jdbcType="VARCHAR" property="mainPort" />
+    <result column="SUBPORT" jdbcType="VARCHAR" property="subPort" />
+    <result column="OTHPOLICYNO" jdbcType="VARCHAR" property="othPolicyNo" />
+    <result column="THEIRCOMPANYCODE" jdbcType="VARCHAR" property="theirCompanyCode" />
+    <result column="THEIRCOMPANYNAME" jdbcType="VARCHAR" property="theirCompanyName" />
+    <result column="THEIRREFERENCE" jdbcType="VARCHAR" property="theirReference" />
+    <result column="ARBITORYNAME" jdbcType="VARCHAR" property="arbitoryName" />
+    <result column="INSTALLMENTNO" jdbcType="DECIMAL" property="installMentNo" />
+    <result column="ENDORSETIMES" jdbcType="DECIMAL" property="endorseTimes" />
+    <result column="REGISTTIMES" jdbcType="DECIMAL" property="registTimes" />
+    <result column="CLAIMSTIMES" jdbcType="DECIMAL" property="claimsTimes" />
+    <result column="PRINTTIMES" jdbcType="DECIMAL" property="printTimes" />
+    <result column="ISSUECOMPANY" jdbcType="VARCHAR" property="issueCompany" />
+    <result column="ISSUEPLACE" jdbcType="VARCHAR" property="issuePlace" />
+    <result column="COMPANYCODE" jdbcType="VARCHAR" property="companyCode" />
+    <result column="SALESMANCODE" jdbcType="VARCHAR" property="salesManCode" />
+    <result column="APPROVERCODE" jdbcType="VARCHAR" property="approverCode" />
+    <result column="OPERATORCODE" jdbcType="VARCHAR" property="operatorCode" />
+    <result column="INPUTDATE" jdbcType="TIMESTAMP" property="inputDate" />
+    <result column="UWYEAR" jdbcType="VARCHAR" property="uwYear" />
+    <result column="UNDERWRITECODE" jdbcType="VARCHAR" property="underWriteCode" />
+    <result column="UNDERWRITENAME" jdbcType="VARCHAR" property="underWriteName" />
+    <result column="UNDERWRITEENDDATE" jdbcType="TIMESTAMP" property="underWriteEndDate" />
+    <result column="UNDERWRITEIND" jdbcType="VARCHAR" property="underWriteInd" />
+    <result column="AUTORENEWIND" jdbcType="VARCHAR" property="autoRenewInd" />
+    <result column="MULTIRISKIND" jdbcType="VARCHAR" property="multiRiskInd" />
+    <result column="LASTMODIFIERCODE" jdbcType="VARCHAR" property="lastModifierCode" />
+    <result column="LASTMODIFYDATE" jdbcType="TIMESTAMP" property="lastModifyDate" />
+    <result column="FRONTINGRIPERCENT" jdbcType="DECIMAL" property="frontIngriPercent" />
+    <result column="FRONTINGRICOMMISSIONPERCENT" jdbcType="DECIMAL" property="frontIngriCommissionPercent" />
+    <result column="FRONTINGRIADMINFEEPERCENT" jdbcType="DECIMAL" property="frontIngriAdminFeePercent" />
+    <result column="FRONTINGRITAXPERCENT" jdbcType="DECIMAL" property="frontIngriTaxPercent" />
+    <result column="RENEWIND" jdbcType="VARCHAR" property="reNewind" />
+    <result column="RENEWEDIND" jdbcType="VARCHAR" property="reNewedInd" />
+    <result column="SURRENDERIND" jdbcType="VARCHAR" property="surrenderInd" />
+    <result column="ENDIND" jdbcType="VARCHAR" property="endInd" />
+    <result column="YEARPREMIUM" jdbcType="DECIMAL" property="yearPremium" />
+    <result column="CANCELIND" jdbcType="VARCHAR" property="cancelInd" />
+    <result column="LOSTIND" jdbcType="VARCHAR" property="lostInd" />
+    <result column="DEBTORIND" jdbcType="VARCHAR" property="debtorInd" />
+    <result column="STATIND" jdbcType="VARCHAR" property="statInd" />
+    <result column="SOURCEID" jdbcType="VARCHAR" property="sourceId" />
+    <result column="MIGRATEDCLIENTNO" jdbcType="VARCHAR" property="migratedClientNo" />
+    <result column="MIGRATEDACCOUNTNUM" jdbcType="VARCHAR" property="migratedAccountNum" />
+    <result column="MIGRATEDPOLICYNO" jdbcType="VARCHAR" property="migratedPolicyNo" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="VALIDIND" jdbcType="VARCHAR" property="validInd" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="SUMUWPREMIUM" jdbcType="DECIMAL" property="sumUwPremium" />
+    <result column="VISATYPE" jdbcType="VARCHAR" property="visaType" />
+    <result column="IMAGEIND" jdbcType="VARCHAR" property="imageInd" />
+    <result column="PROPOSALPOLICYIND" jdbcType="VARCHAR" property="proposalPolicyInd" />
+    <result column="INWARDREFERENCE" jdbcType="VARCHAR" property="inwardReference" />
+    <result column="HENGSANGIND" jdbcType="VARCHAR" property="hengSangInd" />
+    <result column="DOMESTICIND" jdbcType="VARCHAR" property="domesticInd" />
+    <result column="HISTORYIND" jdbcType="VARCHAR" property="historyInd" />
+    <result column="REPLACEPROPOSERIND" jdbcType="VARCHAR" property="replaceProposerInd" />
+    <result column="HANDLESTATUS" jdbcType="VARCHAR" property="handleStatus" />
+    <result column="APPROVEENDDATE" jdbcType="TIMESTAMP" property="approveEndDate" />
+    <result column="DEALERCODE" jdbcType="VARCHAR" property="dealerCode" />
+    <result column="CODIND" jdbcType="VARCHAR" property="codInd" />
+    <result column="ACCEPTDATE" jdbcType="TIMESTAMP" property="acceptDate" />
+    <result column="SPECIALACCEPTANCE" jdbcType="VARCHAR" property="specialAcceptance" />
+    <result column="RELATEDRISKCODE" jdbcType="VARCHAR" property="relatedRiskCode" />
+    <result column="CONTACTREMARK" jdbcType="VARCHAR" property="contactRemark" />
+    <result column="AGRVALIDIND" jdbcType="VARCHAR" property="agrValidInd" />
+    <result column="OUTERUSERCODE" jdbcType="VARCHAR" property="outerUserCode" />
+    <result column="OUTERCOMPANYCODE" jdbcType="VARCHAR" property="outerCompanyCode" />
+    <result column="SERVICEPROJECTCODE" jdbcType="VARCHAR" property="serviceProjectCode" />
+    <result column="CHANNELDETAILCODE" jdbcType="VARCHAR" property="channelDetailCode" />
+    <result column="PRODUCTCODE" jdbcType="VARCHAR" property="productCode" />
+    <result column="PROBLEMIND" jdbcType="VARCHAR" property="problemInd" />
+    <result column="CANCELTIME" jdbcType="TIMESTAMP" property="cancelTime" />
+    <result column="CHANNELFLAG" jdbcType="VARCHAR" property="channelFlag" />
+    <result column="AGRICULTUREFLAG" jdbcType="VARCHAR" property="agricultureFlag" />
+    <result column="HISTORYFLAG" jdbcType="VARCHAR" property="historyFlag" />
+    <result column="CALCULATETYPE" jdbcType="VARCHAR" property="calculateType" />
+    <result column="BUSINESSIND" jdbcType="VARCHAR" property="businessInd" />
+    <result column="SALESCOMMISSIONERCODE" jdbcType="VARCHAR" property="salesCommissionerCode" />
+    <result column="CMBPRINTIVCIND" jdbcType="VARCHAR" property="cmbPrintivcInd" />
+    <result column="BUSINESSMODE" jdbcType="VARCHAR" property="businessMode" />
+    <result column="APPLYNO" jdbcType="VARCHAR" property="applyNo" />
+    <result column="OLDCARPRINTFLAG" jdbcType="VARCHAR" property="oldCarPrintFlag" />
+    <result column="CHANNELTIP" jdbcType="VARCHAR" property="channelTip" />
+    <result column="COOPERATESITECODE" jdbcType="VARCHAR" property="cooperateSiteCode" />
+    <result column="APPLYSERIALNO" jdbcType="DECIMAL" property="applySerialno" />
+    <result column="COMINSUREIND" jdbcType="VARCHAR" property="cominsureInd" />
+    <result column="TEAMMANAGER" jdbcType="VARCHAR" property="teamManager" />
+    <result column="PIONEERCODE" jdbcType="VARCHAR" property="pioneerCode" />
+    <result column="COMPOLICYINFO" jdbcType="VARCHAR" property="comPolicyInfo" />
+    <result column="PREFEEFLAG" jdbcType="VARCHAR" property="preFeeFlag" />
+    <result column="POASERIALNO" jdbcType="VARCHAR" property="poaSerialNo" />
+    <result column="SURVEYIND" jdbcType="VARCHAR" property="surveyInd" />
+    <result column="PRIIND" jdbcType="VARCHAR" property="priInd" />
+    <result column="PRINTDATE" jdbcType="TIMESTAMP" property="printDate" />
+    <result column="OUTERSUBCOMPANYCODE" jdbcType="VARCHAR" property="outerSubCompanyCode" />
+    <result column="DEPARTMENTCODE" jdbcType="VARCHAR" property="departmentCode" />
+    <result column="BASKETIND" jdbcType="VARCHAR" property="basketInd" />
+    <result column="FLOWID" jdbcType="VARCHAR" property="flowId" />
+    <result column="INTERSALESMANREGISTERNO" jdbcType="VARCHAR" property="interSalesManRegisterNo" />
+    <result column="INTERSALESMANCODE" jdbcType="VARCHAR" property="interSalesManCode" />
+    <result column="SALESMANREGISTERNO" jdbcType="VARCHAR" property="salesManRegisterNo" />
+    <result column="IMAGEATTACHIND" jdbcType="VARCHAR" property="imageAttachInd" />
+    <result column="MONEYSUSPICIOUSIND" jdbcType="VARCHAR" property="moneySuSpiciousInd" />
+    <result column="RELATETRADETYPE" jdbcType="VARCHAR" property="relatetRadeType" />
+    <result column="BUSINESSGRADE" jdbcType="VARCHAR" property="businessGrade" />
+    <result column="BUSINESSTYPESOURCE" jdbcType="VARCHAR" property="businessTypeSource" />
+    <result column="BUSINESSSOURCESUB" jdbcType="VARCHAR" property="businessSourceSub" />
+    <result column="CHANNELSOURCE" jdbcType="VARCHAR" property="channelSource" />
+    <result column="CHANNELSOURCESUB" jdbcType="VARCHAR" property="channelSourceSub" />
+    <result column="TEAMCODE" jdbcType="VARCHAR" property="teamCode" />
+    <result column="RELATEPROPOSALNO" jdbcType="VARCHAR" property="relatePropoSalNo" />
+    <result column="CARPARKNAME" jdbcType="VARCHAR" property="carParkName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    POLICYNO, PROPOSALNO, PRINTNO, BUSINESSCHANNEL, BUSINESSSOURCE, BUSINESSTYPE, POLICYSORT, 
+    LANGUAGE, GROUPIND, INTERMEDIARYCODE, AGREEMENTNO, SOLUTIONCODE, CREDITPERIOD, INDICATIONNO, 
+    INDICATIONSEQNO, QUOTATIONNO, QUOTATIONSEQNO, HOLDCOVERNO, HOLDCOVERSEQNO, COVERNOTENO, 
+    COVERNOTESEQNO, AGENTREFERENCENO, RENEWALNO, REPLACEDPOLICYNO, PROMOTIONCODE, APPLICODE, 
+    APPLINAME, APPLIADDRESS, APPLIADDRTYPE, INSUREDCODE, INSUREDNAME, INSUREDADDRESS, 
+    INSUREDADDRTYPE, OPERATEDATE, RECEIVEDDATE, ISSUEDATE, CURRENCY, SUMINSURED, SUMGROSSPREMIUM, 
+    SUMNETPREMIUM, ARGUESOLUTION, MAINPORT, SUBPORT, OTHPOLICYNO, THEIRCOMPANYCODE, THEIRCOMPANYNAME, 
+    THEIRREFERENCE, ARBITORYNAME, INSTALLMENTNO, ENDORSETIMES, REGISTTIMES, CLAIMSTIMES, 
+    PRINTTIMES, ISSUECOMPANY, ISSUEPLACE, COMPANYCODE, SALESMANCODE, APPROVERCODE, OPERATORCODE, 
+    INPUTDATE, UWYEAR, UNDERWRITECODE, UNDERWRITENAME, UNDERWRITEENDDATE, UNDERWRITEIND, 
+    AUTORENEWIND, MULTIRISKIND, LASTMODIFIERCODE, LASTMODIFYDATE, FRONTINGRIPERCENT, 
+    FRONTINGRICOMMISSIONPERCENT, FRONTINGRIADMINFEEPERCENT, FRONTINGRITAXPERCENT, RENEWIND, 
+    RENEWEDIND, SURRENDERIND, ENDIND, YEARPREMIUM, CANCELIND, LOSTIND, DEBTORIND, STATIND, 
+    SOURCEID, MIGRATEDCLIENTNO, MIGRATEDACCOUNTNUM, MIGRATEDPOLICYNO, REMARK, VALIDIND, 
+    FLAG, SUMUWPREMIUM, VISATYPE, IMAGEIND, PROPOSALPOLICYIND, INWARDREFERENCE, HENGSANGIND, 
+    DOMESTICIND, HISTORYIND, REPLACEPROPOSERIND, HANDLESTATUS, APPROVEENDDATE, DEALERCODE, 
+    CODIND, ACCEPTDATE, SPECIALACCEPTANCE, RELATEDRISKCODE, CONTACTREMARK, AGRVALIDIND, 
+    OUTERUSERCODE, OUTERCOMPANYCODE, SERVICEPROJECTCODE, CHANNELDETAILCODE, PRODUCTCODE, 
+    PROBLEMIND, CANCELTIME, CHANNELFLAG, AGRICULTUREFLAG, HISTORYFLAG, CALCULATETYPE, 
+    BUSINESSIND, SALESCOMMISSIONERCODE, CMBPRINTIVCIND, BUSINESSMODE, APPLYNO, OLDCARPRINTFLAG, 
+    CHANNELTIP, COOPERATESITECODE, APPLYSERIALNO, COMINSUREIND, TEAMMANAGER, PIONEERCODE, 
+    COMPOLICYINFO, PREFEEFLAG, POASERIALNO, SURVEYIND, PRIIND, PRINTDATE, OUTERSUBCOMPANYCODE, 
+    DEPARTMENTCODE, BASKETIND, FLOWID, INTERSALESMANREGISTERNO, INTERSALESMANCODE, SALESMANREGISTERNO, 
+    IMAGEATTACHIND, MONEYSUSPICIOUSIND, RELATETRADETYPE, BUSINESSGRADE, BUSINESSTYPESOURCE, 
+    BUSINESSSOURCESUB, CHANNELSOURCE, CHANNELSOURCESUB, TEAMCODE, RELATEPROPOSALNO, CARPARKNAME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from GUPOLICYMAIN
+    where POLICYNO = #{policyno,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 根据保单号查询 -->
+  <select id="findByPolicyNo" parameterType="java.lang.String" resultType="com.chinacoal.ins.proposal.car.vo.GuPolicyMainVo">
+    select
+       t.companyCode as companyCode,
+       t.CompanyCodeTradtional as CompanyCodeTradtional,
+       t.NetPointCode as netPointCode,
+       t.ChannelSource as channelSource,
+       t.ChannelSourceSub as channelSourceSub,
+       t.BusinessSourceSub as businessSourceSub,
+       t.businessDetail as businessDetail,
+       t.businessDetailThree as businessDetailThree,
+       t.teamCode as teamCode,
+       t.IntermediaryCode as IntermediaryCode,
+       t.AgreementNo as AgreementNo,
+       t.IssueDate as IssueDate,
+       (select username from saUser WHERE userCode = t.salesmanCode) as handlerName,
+       t.salesmanCode as salesmanCode,
+      (select agentName from PrpdAgent WHERE agentCode = t.IntermediaryCode) as agentName,
+       t.proposalno as proposalNo
+    from gupolicymain t
+    <where>
+      <if test="_parameter != null">
+        and t.POLICYNO = #{policyNo,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <!-- 根据分单号查询简单信息-->
+  <select id="findBySubpolicyNo" parameterType="java.lang.String" resultType="com.chinacoal.ins.proposal.car.vo.GuPolicyMainVo">
+    select a.salesmanCode as salesmanCode,
+       (select username from saUser WHERE userCode = a.salesmanCode) as handlerName,
+       a.IntermediaryCode as IntermediaryCode,
+       (select agentName from PrpdAgent WHERE agentCode = a.IntermediaryCode) as agentName,
+       a.companyCodeTradtional as CompanyCodeTradtional,
+       a.companycode as companycode
+    from gupolicymain a, gupolicyrisk a1
+    <where>
+      a.policyno = a1.policyno
+      <if test="_parameter!=null">
+        and a1.subpolicyno = #{subpolicyNo}
+      </if>
+    </where>
+  </select>
+</mapper>
